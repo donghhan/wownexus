@@ -7,7 +7,6 @@ import { locales, pathnames, localePrefix } from "./config";
 interface LanguageSwitcherSelectProp {
   children: React.ReactNode;
   defaultValue: string;
-  label: string;
 }
 
 const { usePathname, useRouter } = createLocalizedPathnamesNavigation({
@@ -19,7 +18,6 @@ const { usePathname, useRouter } = createLocalizedPathnamesNavigation({
 export default function LanguageSwitcherSelect({
   children,
   defaultValue,
-  label,
 }: LanguageSwitcherSelectProp) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -39,7 +37,6 @@ export default function LanguageSwitcherSelect({
 
   return (
     <label>
-      <p className="sr-only">{label}</p>
       <select
         className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
         defaultValue={defaultValue}
