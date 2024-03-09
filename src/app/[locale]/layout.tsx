@@ -1,13 +1,17 @@
 import "../../styles/global.scss";
 import { inter, notoSansKR, notoSansHK } from "@/styles/variables/fonts";
 
+interface RootLayoutProp {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
 export default function RootLayout({
   children,
   params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
+}: RootLayoutProp) {
   return (
     <html lang={locale}>
       <body

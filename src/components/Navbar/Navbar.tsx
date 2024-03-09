@@ -1,10 +1,8 @@
-"use client";
 import "./style.Navbar.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { useTransition } from "react";
-import { useTranslations, useLocale } from "next-intl";
-import { useRouter, usePathname } from "./languageSwitcher";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
 
 interface LanguageSwitcherProp {
   defaultValue: string;
@@ -12,15 +10,12 @@ interface LanguageSwitcherProp {
 }
 
 export default function Navbar(): JSX.Element {
-  //   const t = useTranslations("Navbar");
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const t = useTranslations("Navbar");
 
   return (
     <header>
       <nav>
+        <LanguageSwitcher />
         <Link href="/">
           <Image
             src="/logo.png"

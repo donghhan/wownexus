@@ -1,0 +1,12 @@
+{
+    "Index": {
+        "title": "안녕!"
+    },
+    "LanguageSwitcher": {
+        "label": "한국어",
+        "locale": "{locale, select, en {🇺🇸 English} ko {🇰🇷 한국어} tw {🇹🇼 中文} other {Unknown}}"
+    },
+    "Navbar": {
+        "profile": "프로필"
+    }
+}

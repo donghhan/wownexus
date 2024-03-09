@@ -1,10 +1,17 @@
 import createMiddleware from "next-intl/middleware";
+import {
+  pathnames,
+  locales,
+  localePrefix,
+} from "@/components/Navbar/LanguageSwitcher/config";
 
 export default createMiddleware({
-  locales: ["en_US", "ko_KR", "zh_TW"],
-  defaultLocale: "ko_KR",
+  defaultLocale: "en",
+  locales,
+  pathnames,
+  localePrefix,
 });
 
 export const config = {
-  matcher: ["/", "/(en_US|ko_KR|zh_TW)/:path*"],
+  matcher: ["/", "/(en|ko|tw)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
 };
