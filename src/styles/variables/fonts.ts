@@ -1,16 +1,16 @@
-import { Inter, Noto_Sans_KR, Noto_Sans_HK } from "next/font/google";
+import localFont from "next/font/local";
 
-export const inter = Inter({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600"],
+export const inter = localFont({
+  src: "../../app/fonts/Inter.ttf",
+  display: "swap",
 });
 
-export const notoSansKR = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600"],
+export const notoSansKR = localFont({
+  src: "../../app/fonts/NotoSansKR.ttf",
+  display: "swap",
 });
 
-export const notoSansHK = Noto_Sans_HK({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600"],
+export const notoSansHK = localFont({
+  src: "../../app/fonts/NotoSansHK.ttf",
+  display: "swap",
 });
