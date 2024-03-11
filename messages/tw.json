@@ -3,10 +3,11 @@
         "title": "Hello world!"
     },
     "LanguageSwitcher": {
-        "label": "中文",
         "locale": "{locale, select, en {🇺🇸 English} ko {🇰🇷 한국어} tw {🇹🇼 中文} other {Unknown}}"
     },
     "Navbar": {
-        "profile": "프로필"
+        "profile": "輪廓",
+        "dungeon": "地城",
+        "apply": "申請"
     }
 }
