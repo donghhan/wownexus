@@ -7,6 +7,7 @@
     },
     "Navbar": {
         "profile": "Profile",
-        "dungeon": "Dungeon"
+        "dungeon": "Dungeon",
+        "apply": "Apply"
     }
 }

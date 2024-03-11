@@ -5,4 +5,58 @@ header {
   width: 20%;
   max-width: 10rem;
   background-color: $gray800;
+  padding: 0 2em;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+
+      .menu__link {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: background-color 0.2s ease-in-out;
+        background-color: transparent;
+        border-radius: 0.5rem;
+
+        &:hover {
+          background-color: $gray400;
+        }
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0.5rem;
+        }
+
+        .hover-menu__wrapper {
+          padding: 0.3em 0.7em;
+          background-color: $gray300;
+          border-radius: 0.5rem;
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .hover-menu__text {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
 }

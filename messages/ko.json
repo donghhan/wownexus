@@ -7,6 +7,7 @@
     },
     "Navbar": {
         "profile": "프로필",
-        "dungeon": "던전"
+        "dungeon": "던전",
+        "apply": "신청"
     }
 }
