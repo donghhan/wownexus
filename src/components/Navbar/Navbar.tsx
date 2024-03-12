@@ -69,7 +69,7 @@ export default function Navbar(): JSX.Element {
                   style={{ objectFit: "cover" }}
                 />
               </Link>
-              {/* <HoverMenu hoverText={i.hoverText} /> */}
+              <HoverMenu hoverText={i.hoverText} />
             </li>
           ))}
         </ul>

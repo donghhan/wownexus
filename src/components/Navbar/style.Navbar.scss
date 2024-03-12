@@ -30,10 +30,6 @@ header {
         background-color: transparent;
         border-radius: 0.5rem;
 
-        &:hover {
-          background-color: $gray400;
-        }
-
         a {
           width: 100%;
           height: 100%;
@@ -41,16 +37,33 @@ header {
           justify-content: center;
           align-items: center;
           border-radius: 0.5rem;
+          position: relative;
+
+          &:hover {
+            background-color: $gray400;
+          }
         }
 
         .hover-menu__wrapper {
           padding: 0.3em 0.7em;
-          background-color: $gray300;
+          width: max-content;
+          background-color: $blue;
           border-radius: 0.5rem;
           position: absolute;
           display: flex;
+          left: 3.5rem;
           justify-content: center;
           align-items: center;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: -0.25rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: $blue;
+            transform: rotate(45deg);
+          }
 
           .hover-menu__text {
             font-size: 0.8rem;

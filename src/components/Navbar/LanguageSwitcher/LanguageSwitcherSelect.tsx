@@ -1,4 +1,5 @@
 "use client";
+import "./style.LanguageSwitcher.scss";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
 import { createLocalizedPathnamesNavigation } from "next-intl/navigation";
