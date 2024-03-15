@@ -38,35 +38,11 @@ header {
           align-items: center;
           border-radius: 0.5rem;
           position: relative;
+          transition: background-color 0.2s ease-in-out;
 
           &:hover {
             background-color: $gray400;
-          }
-        }
-
-        .hover-menu__wrapper {
-          padding: 0.3em 0.7em;
-          width: max-content;
-          background-color: $blue;
-          border-radius: 0.5rem;
-          position: absolute;
-          display: flex;
-          left: 3.5rem;
-          justify-content: center;
-          align-items: center;
-
-          &::after {
-            content: "";
-            position: absolute;
-            left: -0.25rem;
-            width: 0.5rem;
-            height: 0.5rem;
-            background-color: $blue;
-            transform: rotate(45deg);
-          }
-
-          .hover-menu__text {
-            font-size: 0.8rem;
+            transition: background-color 0.2s ease-in-out;
           }
         }
       }

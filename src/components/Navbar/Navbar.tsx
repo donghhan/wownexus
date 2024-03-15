@@ -1,20 +1,11 @@
+"use client";
 import "./style.Navbar.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
-
-interface HoverMenuProp {
-  hoverText: string;
-}
-
-function HoverMenu({ hoverText }: HoverMenuProp): JSX.Element {
-  return (
-    <div className="hover-menu__wrapper">
-      <span className="hover-menu__text">{hoverText}</span>
-    </div>
-  );
-}
+import HoverMenu from "./HoverMenu/HoverMenu";
 
 export default function Navbar(): JSX.Element {
   const t = useTranslations("Navbar");
@@ -42,7 +33,6 @@ export default function Navbar(): JSX.Element {
 
   return (
     <header>
-      <HoverMenu hoverText="hi" />
       <nav>
         <Link href="/">
           <Image
