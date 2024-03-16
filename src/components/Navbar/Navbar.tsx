@@ -5,18 +5,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
-import HoverMenu from "./HoverMenu/HoverMenu";
 
 export default function Navbar(): JSX.Element {
   const t = useTranslations("Navbar");
 
   const navLinks = [
-    {
-      href: "/",
-      id: "profile",
-      src: "/icon/profile.svg",
-      hoverText: t("profile"),
-    },
     {
       href: "/",
       id: "dungeon",
@@ -46,22 +39,32 @@ export default function Navbar(): JSX.Element {
         </Link>
         <LanguageSwitcher />
         <ul>
-          {navLinks.map((i) => (
-            <li className="menu__link" key={i.id}>
-              <Link href={i.href}>
-                <Image
-                  id={i.id}
-                  src={i.src}
-                  alt="link icon"
-                  quality={100}
-                  width={30}
-                  height={30}
-                  style={{ objectFit: "cover" }}
-                />
-              </Link>
-              <HoverMenu hoverText={i.hoverText} />
-            </li>
-          ))}
+          <li className="menu__link">
+            <Link href="/">
+              <Image
+                id="profile"
+                src="/icon/profile.svg"
+                alt="link icon"
+                quality={100}
+                width={30}
+                height={30}
+                style={{ objectFit: "cover" }}
+              />
+            </Link>
+          </li>
+          <li className="menu__link">
+            <Link href="/">
+              <Image
+                id="profile"
+                src="/icon/profile.svg"
+                alt="link icon"
+                quality={100}
+                width={30}
+                height={30}
+                style={{ objectFit: "cover" }}
+              />
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
