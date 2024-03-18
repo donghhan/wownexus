@@ -2,10 +2,12 @@
 
 select {
   background-color: transparent;
-  border: 1px solid color.$gray200;
-  width: 3rem;
-  height: 3rem;
+  border: transparent;
   border-radius: 0.5rem;
-  color: white;
   appearance: none;
+  width: max-content;
+  height: max-content;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
 }

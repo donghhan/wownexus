@@ -42,7 +42,37 @@ header {
 
           &:hover {
             background-color: $gray400;
-            transition: background-color 0.2s ease-in-out;
+          }
+        }
+
+        .hover-menu__wrapper {
+          display: none;
+
+          &.open {
+            background-color: $blue;
+            position: absolute;
+            width: max-content;
+            border-radius: 0.5rem;
+            display: flex;
+            left: 120%;
+            padding: 10%;
+            justify-content: center;
+            align-items: center;
+
+            &::before {
+              content: "";
+              width: 0.5rem;
+              height: 0.5rem;
+              position: absolute;
+              left: -0.2rem;
+              transform: rotate(45deg);
+              background-color: $blue;
+            }
+
+            span {
+              color: $white;
+              font-size: 0.75rem;
+            }
           }
         }
       }
