@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import useResize from "@/hooks/useResize";
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
 
 interface HoverMenuProp extends React.HTMLAttributes<HTMLDivElement> {
