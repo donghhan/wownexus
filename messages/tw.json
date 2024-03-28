@@ -9,5 +9,8 @@
         "profile": "輪廓",
         "dungeon": "地城",
         "apply": "申請"
+    },
+    "Auth": {
+        "login": "登录"
     }
 }

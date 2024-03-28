@@ -9,5 +9,8 @@
         "profile": "프로필",
         "dungeon": "던전",
         "apply": "신청"
+    },
+    "Auth": {
+        "login": "로그인"
     }
 }

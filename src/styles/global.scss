@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: color.$gray800;
+  background-color: color.$gray700;
 }
 
 a {
@@ -19,4 +19,11 @@ ul,
 ol,
 li {
   list-style: none;
+}
+
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }

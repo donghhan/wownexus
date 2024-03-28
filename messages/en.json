@@ -9,5 +9,8 @@
         "profile": "Profile",
         "dungeon": "Dungeon",
         "apply": "Apply"
+    },
+    "Auth": {
+        "login": "Login"
     }
 }

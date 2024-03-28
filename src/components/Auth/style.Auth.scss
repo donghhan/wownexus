@@ -1,0 +1,30 @@
+@use "../../styles/variables/breakpoint" as breakpoint;
+@use "../../styles/variables/color" as color;
+
+#auth {
+  position: fixed;
+  top: 2em;
+  right: 3em;
+
+  .auth__link {
+    color: color.$white;
+    font-size: 1.25rem;
+    padding: 0.75em 1.25em;
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    letter-spacing: 0.1em;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: color.$gray400;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    &:active {
+      background-color: color.$gray500;
+    }
+  }
+}

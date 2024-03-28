@@ -1,0 +1,20 @@
+@use "../../styles/variables/breakpoint" as breakpoint;
+@use "../../styles/variables/color" as color;
+
+button {
+  background-color: color.$gray400;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: color.$white;
+  padding: 1em 2em;
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: color.$gray300;
+    transition: background-color 0.2s ease-in;
+  }
+
+  &:active {
+    background-color: color.$gray500;
+  }
+}
