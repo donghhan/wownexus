@@ -3,7 +3,7 @@
         "title": "Hello world!"
     },
     "LanguageSwitcher": {
-        "locale": "{locale, select, en {🇺🇸} ko {🇰🇷} tw {🇹🇼} other {Unknown}}"
+        "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} other {Unknown}}"
     },
     "Navbar": {
         "profile": "輪廓",

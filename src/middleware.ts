@@ -6,12 +6,12 @@ import {
 } from "@/components/Navbar/LanguageSwitcher/config";
 
 export default createMiddleware({
-  defaultLocale: "en",
+  defaultLocale: "kr",
   locales,
   pathnames,
   localePrefix,
 });
 
 export const config = {
-  matcher: ["/", "/(en|ko|tw)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(us|kr|tw)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
 };

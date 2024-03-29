@@ -2,13 +2,14 @@ import "./style.Auth.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { getAccessToken } from "./action";
 
-export default function Auth() {
+export default async function Auth() {
   const t = useTranslations("Auth");
 
   return (
     <div id="auth">
-      <Link href="/login" className="auth__link">
+      <button className="auth__link">
         <Image
           src="/icon/anonymous.svg"
           alt="unauthorized icon"
@@ -16,7 +17,7 @@ export default function Auth() {
           height={30}
         />
         {t("login")}
-      </Link>
+      </button>
     </div>
   );
 }
