@@ -1,5 +1,4 @@
 "use client";
-import style from "./navbar.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -70,7 +69,7 @@ export default function Navbar(): JSX.Element {
 
   return (
     <aside
-      className="w-full h-20 flex flex-row items-center p-10 gap-16 lg:w-32 lg:h-screen lg:flex-col"
+      className="hidden w-full h-20 flex-row items-center p-10 gap-16 lg:flex lg:w-32 lg:h-screen lg:flex-col"
       style={{ border: "1px solid white" }}
     >
       <div>

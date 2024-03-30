@@ -1,5 +1,4 @@
 "use client";
-import "./style.LanguageSwitcher.scss";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
 import { createLocalizedPathnamesNavigation } from "next-intl/navigation";
@@ -37,15 +36,13 @@ export default function LanguageSwitcherSelect({
   }
 
   return (
-    <label>
-      <select
-        className="inline-flex appearance-none bg-transparent"
-        defaultValue={defaultValue}
-        disabled={isPending}
-        onChange={onSelectChange}
-      >
-        {children}
-      </select>
-    </label>
+    <select
+      className="inline-flex p-3 appearance-none bg-transparent cursor-pointer text-2xl"
+      defaultValue={defaultValue}
+      disabled={isPending}
+      onChange={onSelectChange}
+    >
+      {children}
+    </select>
   );
 }

@@ -1,6 +1,5 @@
-import Layout from "@/components/Layout/Layout";
 import Navbar from "@/components/Navbar/Navbar";
-import Auth from "@/components/Auth/Auth";
+import Header from "@/components/Header/Header";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
     <NextIntlClientProvider messages={messages}>
       <Navbar />
       <main className="lg:w-[calc(100%-8rem)] relative">
-        <Auth />
+        <Header />
       </main>
     </NextIntlClientProvider>
   );
