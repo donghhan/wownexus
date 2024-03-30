@@ -39,7 +39,7 @@ export default function LanguageSwitcherSelect({
   return (
     <label>
       <select
-        className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
+        className="inline-flex appearance-none bg-transparent"
         defaultValue={defaultValue}
         disabled={isPending}
         onChange={onSelectChange}

@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+
+.header {
+  background-color: $gray800;
+  padding: 3em;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      align-items: center;
+
+      .link__wrapper {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .link {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 0.5rem;
+          position: relative;
+          transition: background-color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: $gray400;
+          }
+
+          .hover_menu__close {
+            display: none;
+          }
+
+          .hover_menu__open {
+            background-color: $blue;
+            position: absolute;
+            width: max-content;
+            border-radius: 0.5rem;
+            display: flex;
+            left: 120%;
+            padding: 10%;
+            justify-content: center;
+            align-items: center;
+
+            &::before {
+              content: "";
+              width: 0.5rem;
+              height: 0.5rem;
+              position: absolute;
+              left: -0.2rem;
+              transform: rotate(45deg);
+              background-color: $blue;
+            }
+
+            .text {
+              color: $white;
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include laptop {
+  .header {
+    border: 1px solid red;
+    width: 7rem;
+    height: 100svh;
+  }
+}

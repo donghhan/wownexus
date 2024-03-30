@@ -1,4 +1,4 @@
-import "../../styles/global.scss";
+import "../globals.css";
 import { inter, notoSansKR, notoSansHK } from "@/styles/variables/fonts";
 
 interface RootLayoutProp {
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${inter.className} ${notoSansKR.className} ${notoSansHK.className}`}
+        className={`${inter.className} ${notoSansKR.className} ${notoSansHK.className} bg-gray800`}
       >
         {children}
       </body>
