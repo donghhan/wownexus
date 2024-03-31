@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Navbar from "../Navbar/Navbar";
 import LanguageSwitcher from "../Navbar/LanguageSwitcher/LanguageSwitcher";
 
 export default function Header() {
@@ -17,18 +16,24 @@ export default function Header() {
       href: "/profile",
       text: t("profile"),
     },
-    {
-      id: "dungeon",
-      src: "/icon/labyrinth.svg",
-      href: "/dungeon",
-      text: t("dungeon"),
-    },
-    {
-      id: "apply",
-      src: "/icon/apply.svg",
-      href: "/apply",
-      text: t("apply"),
-    },
+    // {
+    //   id: "dungeon",
+    //   src: "/icon/labyrinth.svg",
+    //   href: "/dungeon",
+    //   text: t("dungeon"),
+    // },
+    // {
+    //   id: "apply",
+    //   src: "/icon/apply.svg",
+    //   href: "/apply",
+    //   text: t("apply"),
+    // },
+    // {
+    //   id: "pvp",
+    //   src: "/icon/sword.svg",
+    //   href: "/pvp",
+    //   text: t("pvp"),
+    // },
   ];
 
   return (

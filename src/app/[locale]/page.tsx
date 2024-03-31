@@ -7,9 +7,8 @@ export default function Home() {
   return (
     <NextIntlClientProvider messages={messages}>
       <Navbar />
-      <main className="lg:w-[calc(100%-8rem)] relative">
-        <Header />
-      </main>
+      <Header />
+      <main className="lg:w-[calc(100%-8rem)] relative"></main>
     </NextIntlClientProvider>
   );
 }

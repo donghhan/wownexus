@@ -8,9 +8,23 @@
     "Navbar": {
         "profile": "프로필",
         "dungeon": "던전",
-        "apply": "신청"
+        "apply": "신청",
+        "pvp": "PVP"
     },
     "Auth": {
         "login": "로그인"
+    },
+    "Button": {
+        "submit": "확인",
+        "loading": "로딩 중..."
+    },
+    "SearchForm": {
+        "choose_realm": "모드",    
+        "server": "서버",
+        "": ""
+    },
+    "ProfilePage": {
+        "character_name_placeholder": "캐릭터명을 입력하세요",
+        "character_name_input_label": "캐릭터명"
     }
 }

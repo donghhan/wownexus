@@ -8,9 +8,23 @@
     "Navbar": {
         "profile": "輪廓",
         "dungeon": "地城",
-        "apply": "申請"
+        "apply": "申請",
+        "pvp": "PVP"
     },
     "Auth": {
         "login": "登录"
+    },
+    "Button": {
+        "submit": "確認",
+        "loading": "載入中..."
+    },
+    "SearchForm": {
+        "choose_realm": "領域",    
+        "server": "伺服器",
+        "": ""
+    },
+    "ProfilePage": {
+        "character_name_placeholder": "請輸入您的角色名稱",
+        "character_name_input_label": "名字"
     }
 }

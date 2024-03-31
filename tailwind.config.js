@@ -6,11 +6,11 @@ module.exports = {
       colors: {
         // Accent
         "signature-blue": "#535aff",
-        green: "#49dd9f",
-        red: "#ef655f",
-        yellow: "#f9bc15",
-        darkblue: "#462cc6",
-        lightblue: "#e7e8ff",
+        "signature-green": "#49dd9f",
+        "signature-red": "#ef655f",
+        "signature-yellow": "#f9bc15",
+        "signature-darkblue": "#462cc6",
+        "signature-lightblue": "#e7e8ff",
 
         // Gray
         gray800: "#090a1a",

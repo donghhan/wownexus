@@ -8,9 +8,23 @@
     "Navbar": {
         "profile": "Profile",
         "dungeon": "Dungeon",
-        "apply": "Apply"
+        "apply": "Apply",
+        "pvp": "PVP"
     },
     "Auth": {
         "login": "Login"
+    },
+    "Button": {
+        "submit": "OK",
+        "loading": "Loading..."
+    },
+    "SearchForm": {
+        "choose_realm": "Realm",    
+        "server": "서버",
+        "": ""
+    },
+    "ProfilePage": {
+        "character_name_placeholder": "Please input character name",
+        "character_name_input_label": "Character"
     }
 }
