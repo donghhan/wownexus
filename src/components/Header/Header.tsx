@@ -36,7 +36,7 @@ export default function Header() {
       <header className="w-full h-20 lg:w-[calc(100%-8rem)] lg:h-32 lg:absolute lg:top-0 lg:right-0">
         <nav className="w-full h-full flex items-center justify-between px-10">
           <button
-            className="cursor-pointer"
+            className="block cursor-pointer lg:hidden"
             onClick={() => setHamburgerMenuOpen(true)}
           >
             <Image
@@ -52,7 +52,7 @@ export default function Header() {
         id="hamburger-menu"
         className={`${
           hamrbugerMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-all duration-300 w-full h-svh bg-[#212230] absolute top-0 left-0 z-10 px-10 pt-6 flex flex-col items-center gap-10`}
+        } transition-all duration-300 w-full h-svh bg-[#212230] absolute top-0 left-0 z-10 px-10 pt-6 flex flex-col items-center gap-10 lg:hidden`}
       >
         <div className="w-full h-20">
           <button>

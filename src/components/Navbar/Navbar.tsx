@@ -68,10 +68,7 @@ export default function Navbar(): JSX.Element {
   ];
 
   return (
-    <aside
-      className="hidden w-full h-20 flex-row items-center p-10 gap-16 lg:flex lg:w-32 lg:h-screen lg:flex-col"
-      style={{ border: "1px solid white" }}
-    >
+    <aside className="absolute left-0 hidden w-full h-20 flex-row items-center p-10 gap-16 lg:flex lg:w-32 lg:h-screen lg:flex-col">
       <div>
         <Link href="/">
           <Image src="/logo.png" width={60} height={60} alt="logo icon" />
