@@ -20,8 +20,9 @@
     },
     "SearchForm": {
         "choose_realm": "모드",    
-        "server": "서버",
-        "": ""
+        "realm_explanation": "시대 = 하드코어 + 디스커버리",
+        "input_text_label": "검색어",
+        "choose_server": "서버"
     },
     "ProfilePage": {
         "character_name_placeholder": "캐릭터명을 입력하세요",
@@ -30,8 +31,7 @@
             "required_error": "검색할 캐릭터명을 입력하세요.",
             "min_length_error": "캐릭터명은 최소 2글자 이상이어야 합니다.",
             "max_length_error": "캐릭터명은 최대 12글자 이하여야 합니다.",
-            "max_length_english_error": "영문 캐릭터명은 최대 12자 이하여야 합니다.",
-            "max_length_korean_error": "한글 캐릭터명은 최대 8자 이하여야 합니다."
+            "invalid_characters": "특수문자, 숫자 및 공백은 포함될 수 없습니다."
         }
     }
 }

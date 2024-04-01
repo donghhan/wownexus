@@ -19,9 +19,10 @@
         "loading": "Loading..."
     },
     "SearchForm": {
-        "choose_realm": "Realm",    
-        "server": "서버",
-        "": ""
+        "choose_realm": "Realm",  
+        "realm_explanation": "ERA = Hardcore + SoD",
+        "input_text_label": "Keyword",
+        "choose_server": "Server"
     },
     "ProfilePage": {
         "character_name_placeholder": "Please input character name",
@@ -29,7 +30,8 @@
         "Error": {
             "required_error": "Must provide character name to search.",
             "min_length_error": "Character name should be at least 2 characters.",
-            "max_length_error": "Character name should not exceed 12 characters."
+            "max_length_error": "Character name should not exceed 12 characters.",
+            "invalid_characters": "Special characters, whitespaces and numbers are not allowed."
         }
     }
 }

@@ -1,31 +1,26 @@
 "use server";
-import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 export async function handleForm(prevState: any, formData: FormData) {
   const t = await getTranslations("ProfilePage.Error");
-  const locale = useLocale();
 
   const data = {
-    character_name: formData.get("character_name"),
+    realm: formData.get("realm"),
+    keyword: formData.get("keyword"),
   };
-
-  // Validator of Korean Character name (Korean only)
-  const checkKoreanCharacterName = (value: string) => {};
 
   // Form validation
   const formSchema = z.object({
-    character_name: z
-      .string()
-      .min(2, t("min_length_error"))
-      .max(12, t("max_length_error"))
-      .trim(),
+    realm: z.string(),
+    keyword: z.string().trim(),
   });
-  const validation = formSchema.safeParse(data);
+  const parsedData = formSchema.safeParse(data);
 
-  if (!validation.success) {
-    console.error(validation.error.flatten());
-    return validation.error.flatten();
+  if (!parsedData.success) {
+    console.error(parsedData.error.flatten());
+    return parsedData.error.flatten();
+  } else {
+    console.log(parsedData.data);
   }
 }
