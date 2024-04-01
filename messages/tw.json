@@ -25,6 +25,11 @@
     },
     "ProfilePage": {
         "character_name_placeholder": "請輸入您的角色名稱",
-        "character_name_input_label": "名字"
+        "character_name_input_label": "角色",
+        "Error": {
+            "required_error": "必須提供角色名稱才能搜尋",
+            "min_length_error": "角色名稱至少應有2個字符.",
+            "max_length_error": "角色名稱不能超過8個字符."
+        }
     }
 }

@@ -8,7 +8,7 @@ export default function Button() {
 
   return (
     <button
-      className="w-max border-slate-50 text-slate-400 bg-zinc-600 px-14 py-3 rounded-md cursor-pointer hover:bg-zinc-500 active:bg-zinc-600 duration-300"
+      className={`w-max border-slate-50 bg-zinc-600 text-slate-400 px-14 py-3 rounded-md cursor-pointer hover:bg-zinc-500 active:bg-zinc-600 duration-300 disabled:bg-zinc-700 disabled:cursor-not-allowed`}
       disabled={pending}
     >
       {pending ? t("loading") : t("submit")}

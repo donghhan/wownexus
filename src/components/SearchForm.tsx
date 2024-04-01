@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Button from "./Button";
 import { useTranslations } from "next-intl";
-import FormTextInput from "./FormInput/FormTextInput";
+import FormTextInput from "./Form/FormTextInput";
 import { getLocale } from "next-intl/server";
 
 interface SearchFormProp {

@@ -25,6 +25,11 @@
     },
     "ProfilePage": {
         "character_name_placeholder": "Please input character name",
-        "character_name_input_label": "Character"
+        "character_name_input_label": "Character",
+        "Error": {
+            "required_error": "Must provide character name to search.",
+            "min_length_error": "Character name should be at least 2 characters.",
+            "max_length_error": "Character name should not exceed 12 characters."
+        }
     }
 }

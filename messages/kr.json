@@ -25,6 +25,13 @@
     },
     "ProfilePage": {
         "character_name_placeholder": "캐릭터명을 입력하세요",
-        "character_name_input_label": "캐릭터명"
+        "character_name_input_label": "캐릭터명",
+        "Error": {
+            "required_error": "검색할 캐릭터명을 입력하세요.",
+            "min_length_error": "캐릭터명은 최소 2글자 이상이어야 합니다.",
+            "max_length_error": "캐릭터명은 최대 12글자 이하여야 합니다.",
+            "max_length_english_error": "영문 캐릭터명은 최대 12자 이하여야 합니다.",
+            "max_length_korean_error": "한글 캐릭터명은 최대 8자 이하여야 합니다."
+        }
     }
 }
