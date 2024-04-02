@@ -22,12 +22,15 @@
         "choose_realm": "領域", 
         "realm_explanation": "經典時期 = 專家模式 + 季節性",
         "input_text_label": "搜尋詞",
-        "choose_server": "伺服器"
+        "choose_server": "伺服器",
+        "please_choose_server": "選擇伺服器"
     },
     "ProfilePage": {
         "character_name_placeholder": "請輸入您的角色名稱",
         "character_name_input_label": "角色",
         "Error": {
+            "invalid_type_realm": "必須提供領域",
+            "invalid_type_server": "必須提供必須提供",
             "required_error": "必須提供角色名稱才能搜尋",
             "min_length_error": "角色名稱至少應有2個字符.",
             "max_length_error": "角色名稱不能超過8個字符.",

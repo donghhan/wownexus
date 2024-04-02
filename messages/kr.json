@@ -22,12 +22,15 @@
         "choose_realm": "모드",    
         "realm_explanation": "시대 = 하드코어 + 디스커버리",
         "input_text_label": "검색어",
-        "choose_server": "서버"
+        "choose_server": "서버",
+        "please_choose_server": "서버를 선택하세요"
     },
     "ProfilePage": {
         "character_name_placeholder": "캐릭터명을 입력하세요",
         "character_name_input_label": "캐릭터명",
         "Error": {
+            "invalid_type_realm": "모드를 선택하세요",
+            "invalid_type_server": "서버를 선택하세요",
             "required_error": "검색할 캐릭터명을 입력하세요.",
             "min_length_error": "캐릭터명은 최소 2글자 이상이어야 합니다.",
             "max_length_error": "캐릭터명은 최대 12글자 이하여야 합니다.",

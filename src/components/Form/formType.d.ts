@@ -1,0 +1,3 @@
+interface ErrorProp {
+  errors?: string[];
+}

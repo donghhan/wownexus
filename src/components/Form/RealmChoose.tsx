@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 
-export default function RealmChoose() {
+export default function RealmChoose({ errors }: ErrorProp) {
   const t = useTranslations("SearchForm");
   const locale = useLocale();
 
@@ -31,7 +31,11 @@ export default function RealmChoose() {
     <div className="flex items-center gap-5">
       <span className="text-slate-400 mr-5">{t("choose_realm")}</span>
       <div>
-        <div className="flex gap-5">
+        <div
+          className={`flex gap-5 w-fit ${
+            errors ? "border-signature-red border-2 rounded-md" : ""
+          }`}
+        >
           {realmData?.map((i) => (
             <div key={i.name}>
               <input
@@ -55,9 +59,13 @@ export default function RealmChoose() {
             </div>
           ))}
         </div>
-        <span className="text-sm text-slate-500">
-          *{t("realm_explanation")}
-        </span>
+        {errors
+          ? errors.map((error, index) => (
+              <span key={index} className="text-signature-red">
+                {error}
+              </span>
+            ))
+          : null}
       </div>
     </div>
   );

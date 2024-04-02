@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 export default function useDropdown() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<any | null>(null);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
 
   const handleOutsideCLick = (event: Event) => {
     if (

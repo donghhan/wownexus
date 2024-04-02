@@ -1,14 +1,7 @@
-"use client";
-import { useFormState } from "react-dom";
-import { useTranslations, useLocale } from "next-intl";
-import { handleForm } from "./action";
 import Navbar from "@/components/Navbar/Navbar";
 import SearchForm from "@/components/Form/SearchForm";
-import FormTextInput from "@/components/Form/FormTextInput";
 
 export default function ProfilePage() {
-  const t = useTranslations("ProfilePage");
-
   return (
     <>
       <Navbar />
