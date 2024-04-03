@@ -1,29 +1,43 @@
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
-export default function RealmChoose({ errors }: ErrorProp) {
+interface RealmChooseProp extends InputProp {
+  onClick: (event: React.MouseEvent<HTMLInputElement>) => void;
+}
+
+export default function RealmChoose({
+  errors,
+  currentLocale,
+  onClick,
+}: RealmChooseProp & InputProp) {
   const t = useTranslations("SearchForm");
-  const locale = useLocale();
 
   // Realm data
+  // dynamic-classic-{locale}: wotlk
+  // dynamic-classic1x-{locale}: vanilla
   let realmData;
-  switch (locale) {
+  switch (currentLocale) {
     case "us":
       realmData = [
-        { name: "wotlk", id: 41 },
-        { name: "vanilla", id: 81 },
+        { name: "wotlk", id: 41, namespace: "dynamic-classic-us" },
+        { name: "vanilla", id: 81, namespace: "dynamic-classic1x-us" },
       ];
       break;
     case "tw":
       realmData = [
-        { name: "wotlk", id: 44 },
-        { name: "vanilla", id: 84 },
+        { name: "wotlk", id: 44, namespace: "dynamic-classic-tw" },
+        { name: "vanilla", id: 84, namespace: "dynamic-classic1x-tw" },
       ];
       break;
+    case "eu":
+      realmData = [
+        { name: "wotlk", id: 43, namespace: "dynamic-classic-eu" },
+        { name: "vanilla", id: 83, namespace: "dynamic-classic1x-eu" },
+      ];
     default:
       realmData = [
-        { name: "wotlk", id: 42 },
-        { name: "vanilla", id: 82 },
+        { name: "wotlk", id: 42, namespace: "dynamic-classic-kr" },
+        { name: "vanilla", id: 82, namespace: "dynamic-classic1x-kr" },
       ];
   }
 
@@ -31,17 +45,18 @@ export default function RealmChoose({ errors }: ErrorProp) {
     <div className="flex items-center gap-5">
       <span className="text-slate-400 mr-5">{t("choose_realm")}</span>
       <div>
-        <div
+        <ul
           className={`flex gap-5 w-fit ${
             errors ? "border-signature-red border-2 rounded-md" : ""
           }`}
         >
           {realmData?.map((i) => (
-            <div key={i.name}>
+            <li key={i.name}>
               <input
                 id={i.name}
                 type="radio"
-                value={i.id}
+                value={i.namespace}
+                onClick={onClick}
                 name="realm"
                 className="absolute opacity-1 w-0 h-0 peer cursor-pointer m-0 p-0 peer"
               />
@@ -56,9 +71,9 @@ export default function RealmChoose({ errors }: ErrorProp) {
                   className="w-full h-full object-cover"
                 />
               </label>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         {errors
           ? errors.map((error, index) => (
               <span key={index} className="text-signature-red">

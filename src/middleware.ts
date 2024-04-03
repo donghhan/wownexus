@@ -1,3 +1,6 @@
+import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { getLocale } from "next-intl/server";
 import createMiddleware from "next-intl/middleware";
 import {
   pathnames,
@@ -13,5 +16,5 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ["/", "/(us|kr|tw)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(us|kr|tw|eu)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
 };

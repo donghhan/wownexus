@@ -1,13 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import useDropdown from "@/hooks/useDropdown";
 
-export default function ServerChoose({ errors }: ErrorProp) {
+export default function ServerChoose({ currentLocale, errors }: InputProp) {
   const t = useTranslations("SearchForm");
   const { isOpen, dropdownRef, toggleDropDown } = useDropdown();
-  const [server, setServer] = useState<string | null>(null);
+  const [server, setServer] = useState<string | undefined>(undefined);
+
+  const serverData = ["ns1", "ns2", "ns3", "ns4"];
+  const handleChooseServer = (event: React.MouseEvent<HTMLInputElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+    setServer(value);
+  };
 
   return (
     <div className="flex items-center gap-5">
@@ -38,38 +44,25 @@ export default function ServerChoose({ errors }: ErrorProp) {
             isOpen ? "scale-1" : "scale-0"
           } absolute right-0 top-14 w-full bg-slate-600 rounded-md p-1 flex flex-col gap-2 duration-300`}
         >
-          <li className="flex items-center cursor-pointer hover:bg-slate-500 w-full h-full p-2 rounded-md">
-            <input
-              className="text-white"
-              type="radio"
-              name="server"
-              value="example 1"
-            />
-          </li>
-          <li className="flex items-center cursor-pointer hover:bg-slate-500 w-full h-full p-2 rounded-md">
-            <input
-              className="text-white"
-              type="radio"
-              name="server"
-              value="example 2"
-            />
-          </li>
-          <li className="flex items-center cursor-pointer hover:bg-slate-500 w-full h-full p-2 rounded-md">
-            <input
-              className="text-white"
-              type="radio"
-              name="server"
-              value="example 3"
-            />
-          </li>
-          <li className="flex items-center cursor-pointer hover:bg-slate-500 w-full h-full p-2 rounded-md">
-            <input
-              className="text-white"
-              type="radio"
-              name="server"
-              value="example 4"
-            />
-          </li>
+          {serverData.map((i) => (
+            <li key={i}>
+              <input
+                id={i}
+                type="radio"
+                value={i}
+                name="server"
+                onChange={toggleDropDown}
+                className="text-white absolute opacity-0 w-0 h-0"
+                onClick={handleChooseServer}
+              />
+              <label
+                htmlFor={i}
+                className="text-white flex items-center cursor-pointer hover:bg-slate-500 w-full h-full p-2 rounded-md"
+              >
+                {i}
+              </label>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

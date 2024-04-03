@@ -8,7 +8,7 @@ export default function FormTextInput({
   name,
   errors,
   ...props
-}: FormTextInputProp & ErrorProp) {
+}: FormTextInputProp & InputProp) {
   return (
     <div className="flex items-center lg:gap-5">
       <span className="text-slate-400 mr-5">{labelText}</span>

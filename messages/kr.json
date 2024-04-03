@@ -3,7 +3,7 @@
         "title": "안녕!"
     },
     "LanguageSwitcher": {
-        "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} other {Unknown}}"
+        "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} eu {🇪🇺} other {Unknown}}"
     },
     "Navbar": {
         "profile": "프로필",

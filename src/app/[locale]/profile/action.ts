@@ -1,13 +1,15 @@
 "use server";
+import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
 export async function handleForm(prevState: any, formData: FormData) {
   const t = await getTranslations("ProfilePage.Error");
+  console.log(cookies());
 
   const data = {
     realm: formData.get("realm"),
-    server: formData.get("server"),
+    // server: formData.get("server"),
     keyword: formData.get("keyword"),
   };
 
@@ -15,17 +17,16 @@ export async function handleForm(prevState: any, formData: FormData) {
   const formSchema = z
     .object({
       realm: z.string({ invalid_type_error: t("invalid_type_realm") }),
-      server: z.string({ invalid_type_error: t("invalid_type_server") }),
+      // server: z.string(),
       keyword: z
         .string()
         .min(1, { message: t("required_error") })
         .trim(),
     })
     .strict();
-  const parsedData = formSchema.safeParse(data);
+  const parsedData = await formSchema.spa(data);
 
   if (!parsedData.success) {
-    console.error(parsedData.error.flatten());
     return parsedData.error.flatten();
   } else {
     console.log(parsedData.data);

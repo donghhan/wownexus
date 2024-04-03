@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useFormState } from "react-dom";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Button from "../Button";
 import RealmChoose from "./RealmChoose";
 import ServerChoose from "./ServerChoose";
@@ -17,13 +17,26 @@ export default function SearchForm({
   serverChoose,
   inputAvailable,
 }: SearchFormProp) {
-  const t = useTranslations("SearchForm");
   const [state, formAction] = useFormState(handleForm, null);
+  const [namespace, setNamespace] = useState<string | undefined>(undefined);
+  const t = useTranslations("SearchForm");
+  const currentLocale = useLocale();
+
+  const handleChooseRealm = (event: React.MouseEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+    setNamespace(value);
+  };
+
+  console.log(namespace);
 
   return (
     <form className="flex flex-col gap-5 lg:justify-start" action={formAction}>
       <div className="flex gap-20 items-center">
-        <RealmChoose errors={state?.fieldErrors.realm} />
+        <RealmChoose
+          errors={state?.fieldErrors.realm}
+          onClick={handleChooseRealm}
+          currentLocale={currentLocale}
+        />
         {serverChoose ? (
           <ServerChoose errors={state?.fieldErrors.server} />
         ) : null}
@@ -34,8 +47,8 @@ export default function SearchForm({
           />
         ) : null}
       </div>
-
       <Button />
+      <span className="text-slate-400">*{t("realm_explanation")}</span>
     </form>
   );
 }
