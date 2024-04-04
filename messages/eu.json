@@ -12,7 +12,20 @@
         "pvp": "PVP"
     },
     "Auth": {
-        "login": "Login"
+        "login": "Login",
+        "create_account": "Create Account",
+        "Error": {
+            "username_required_error": "Username is required",
+            "username_invalid_error": "Username can only contain lowercase and number",
+            "username_unique_error": "Username is already taken",
+            "email_invalid_error": "Invalid format of email",
+            "email_unique_error": "Email is already taken",
+            "password_required_error": "Password is required",
+            "password_min_error": "Password should be at least 8 characters",
+            "password_max_error": "Password must not exceed 16 characters",
+            "password_invalid_error": "Password should include at least uppercase, lowercase, number and special character",
+            "password_not_match_error": "Passwords are not same"
+        }
     },
     "Button": {
         "submit": "OK",
