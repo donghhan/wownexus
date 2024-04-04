@@ -1,7 +1,7 @@
 "use client";
 import { useFormState } from "react-dom";
 import { useTranslations } from "next-intl";
-import Header from "@/components/Header/Header";
+import Header from "@/components/HamburgerMenu/HamburgerMenu";
 import { login } from "./action";
 import InputBox from "@/components/InputBox";
 

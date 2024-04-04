@@ -1,6 +1,33 @@
 "use server";
+import db from "@/lib/db";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
+
+async function checkUsernameUnique(username: string) {
+  const existingUsername = await db.user.findUnique({
+    where: {
+      username,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  return existingUsername ? true : false;
+}
+
+async function checkEmailUnique(email: string) {
+  const existingEmail = await db.user.findUnique({
+    where: {
+      email,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  return existingEmail ? true : false;
+}
 
 export async function createAccount(prevState: any, formData: FormData) {
   const t = useTranslations("Auth.Error");
@@ -19,11 +46,11 @@ export async function createAccount(prevState: any, formData: FormData) {
         .string({ required_error: t("username_required_error") })
         // Only accept combination of lowercases and numbers
         .regex(/[a-z0-9]/, { message: t("username_invalid_error") })
-        .trim(),
+        .refine(checkUsernameUnique, { message: t("username_unique_error") }),
       email: z
         .string()
         .email({ message: t("email_invalid_error") })
-        .trim(),
+        .refine(checkEmailUnique, { message: t("email_unique_error") }),
       password: z
         .string()
         .min(8, { message: t("password_min_error") })
@@ -45,11 +72,10 @@ export async function createAccount(prevState: any, formData: FormData) {
       }
     });
 
-  const validationResult = createAccountSchema.safeParse(data);
+  const validationResult = await createAccountSchema.safeParseAsync(data);
 
   if (!validationResult.success) {
     return validationResult.error.flatten();
   } else {
-    console.log(validationResult.data);
   }
 }
