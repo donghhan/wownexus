@@ -1,7 +1,12 @@
 "use server";
 import db from "@/lib/db";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { z } from "zod";
+import bcrypt from "bcrypt";
 import { useTranslations } from "next-intl";
+import { getIronSession } from "iron-session";
+import { getSession } from "@/lib/session";
 
 async function checkUsernameUnique(username: string) {
   const existingUsername = await db.user.findUnique({
@@ -45,11 +50,13 @@ export async function createAccount(prevState: any, formData: FormData) {
       username: z
         .string({ required_error: t("username_required_error") })
         // Only accept combination of lowercases and numbers
-        .regex(/[a-z0-9]/, { message: t("username_invalid_error") })
+        .regex(/^[a-z0-9]$/, { message: t("username_invalid_error") })
+        .trim()
         .refine(checkUsernameUnique, { message: t("username_unique_error") }),
       email: z
         .string()
         .email({ message: t("email_invalid_error") })
+        .trim()
         .refine(checkEmailUnique, { message: t("email_unique_error") }),
       password: z
         .string()
@@ -77,5 +84,27 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!validationResult.success) {
     return validationResult.error.flatten();
   } else {
+    const BCRYPT_SALT = process.env.BCRYPT_SALT!;
+    const hashedPassword = await bcrypt.hash(
+      validationResult.data.password,
+      BCRYPT_SALT
+    );
+
+    const newUser = await db.user.create({
+      data: {
+        username: validationResult.data.username,
+        email: validationResult.data.email,
+        password: hashedPassword,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    const session = await getSession();
+    session.id = newUser.id;
+    await session.save();
+
+    redirect("/auth");
   }
 }

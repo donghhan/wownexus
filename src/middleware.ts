@@ -1,6 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
-import { getLocale } from "next-intl/server";
 import createMiddleware from "next-intl/middleware";
 import {
   pathnames,

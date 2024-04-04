@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../Navbar/LanguageSwitcher/LanguageSwitcher";
 import AuthHeader from "../AuthHeader";
 
-export default function Header() {
+export default function HamburgerMenu() {
   const [hamrbugerMenuOpen, setHamburgerMenuOpen] = useState<boolean>(false);
   const t = useTranslations("Navbar");
 
@@ -39,8 +39,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full h-20 lg:w-[calc(100%-8rem)] lg:h-32 lg:absolute lg:top-0 lg:right-0">
-        <nav className="w-full h-full flex items-center justify-between px-10">
+      <header className="w-full h-20 fixed lg:w-[calc(100%-8rem)] lg:h-32 lg:top-0 lg:right-0">
+        <nav className="w-full h-full flex items-center justify-between px-5">
           <button
             className="block cursor-pointer lg:hidden"
             onClick={() => setHamburgerMenuOpen(true)}

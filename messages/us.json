@@ -14,6 +14,19 @@
     "Auth": {
         "login": "Login",
         "create_account": "Create Account",
+        "login_username_placeholder": "Username",
+        "login_password_placeholder": "Password",
+        "Menu": {
+            "still_no_account": "Don't have account yet?",
+            "forgot_password": "Forgot password",
+            "already_have_account": "Already have account？"
+        },
+        "Field": {
+            "username_field": "Username",
+            "email_field": "E-mail",
+            "password_field": "Password",
+            "confirm_password_field": "Confirm Password"
+        },
         "Error": {
             "username_required_error": "Username is required",
             "username_invalid_error": "Username can only contain lowercase and number",

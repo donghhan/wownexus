@@ -14,6 +14,19 @@
     "Auth": {
         "login": "登录",
         "create_account": "註冊",
+        "login_username_placeholder": "使用者名",
+        "login_password_placeholder": "密碼",
+        "Menu": {
+            "still_no_account": "還沒有帳戶？",
+            "forgot_password": "忘記密碼",
+            "already_have_account": "已有帳戶？"
+        },
+        "Field": {
+            "username_field": "使用者名",
+            "email_field": "E-mail",
+            "password_field": "密碼",
+            "confirm_password_field": "確認密碼"
+        },
         "Error": {
             "username_required_error": "使用者名稱是必需的",
             "username_invalid_error": "使用者名稱只能包含小寫字母和數字",

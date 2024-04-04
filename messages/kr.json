@@ -14,6 +14,19 @@
     "Auth": {
         "login": "로그인",
         "create_account": "회원가입",
+        "login_username_placeholder": "아이디",
+        "login_password_placeholder": "비밀번호",
+        "Menu": {
+            "still_no_account": "아직 계정이 없나요?",
+            "forgot_password": "비밀번호 찾기",
+            "already_have_account": "이미 계정이 있으신가요?"
+        },
+        "Field": {
+            "username_field": "아이디",
+            "email_field": "E-mail",
+            "password_field": "비밀번호",
+            "confirm_password_field": "비밀번호 확인"
+        },
         "Error": {
             "username_required_error": "아이디를 입력하세요",
             "username_invalid_error": "아이디는 영소문자와 숫자만 가능합니다",
