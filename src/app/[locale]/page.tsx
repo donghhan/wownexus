@@ -1,14 +1,12 @@
 import Navbar from "@/components/Navbar/Navbar";
-import Header from "@/components/Header/Header";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import HamburgerMenu from "@/components/HamburgerMenu/HamburgerMenu";
 
 export default function Home() {
-  const messages = useMessages();
   return (
-    <NextIntlClientProvider messages={messages}>
+    <>
       <Navbar />
-      <Header />
+      <HamburgerMenu />
       <main className="lg:w-[calc(100%-8rem)] relative"></main>
-    </NextIntlClientProvider>
+    </>
   );
 }

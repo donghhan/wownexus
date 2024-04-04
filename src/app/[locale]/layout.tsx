@@ -17,7 +17,7 @@ export default function RootLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <html lang={locale}>
+      <html lang={locale} suppressHydrationWarning={true}>
         <body
           className={`${inter.className} ${notoSansKR.className} ${notoSansHK.className} bg-gray800`}
         >
