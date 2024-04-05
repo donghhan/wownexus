@@ -29,28 +29,24 @@ export default function CreateAccountPage() {
               type="text"
               name="username"
               placeholder={t("Field.username_field")}
-              required
               errors={state?.fieldErrors.username}
             />
             <InputBox
               type="text"
               name="email"
               placeholder={t("Field.email_field")}
-              required
               errors={state?.fieldErrors.email}
             />
             <InputBox
-              type="text"
+              type="password"
               name="password"
               placeholder={t("Field.password_field")}
-              required
               errors={state?.fieldErrors.password}
             />
             <InputBox
               type="password"
               name="confirm_password"
               placeholder={t("Field.confirm_password_field")}
-              required
               errors={state?.fieldErrors.confirm_password}
             />
             <div className="text-slate-400 flex justify-center w-full">

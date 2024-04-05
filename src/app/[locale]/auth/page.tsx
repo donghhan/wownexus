@@ -1,7 +1,9 @@
 "use client";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import Layout from "@/components/Layout";
 import InputBox from "@/components/InputBox";
 import Button from "@/components/Button";
@@ -10,6 +12,7 @@ import { login } from "./action";
 export default function LoginPage() {
   const [state, action] = useFormState(login, null);
   const t = useTranslations("Auth");
+  const router = useRouter();
 
   return (
     <Layout>
@@ -29,15 +32,13 @@ export default function LoginPage() {
               type="text"
               name="username"
               placeholder={t("Field.username_field")}
-              required
-              errors={state?.fieldErrors.username}
+              errors={state?.fieldErrors?.username}
             />
             <InputBox
               type="password"
               name="password"
               placeholder={t("Field.password_field")}
-              required
-              errors={state?.fieldErrors.password}
+              errors={state?.fieldErrors?.password}
             />
             <div className="text-slate-400 flex justify-between w-full">
               <Link

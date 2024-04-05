@@ -1,11 +1,9 @@
 "use server";
 import db from "@/lib/db";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import bcrypt from "bcrypt";
-import { useTranslations } from "next-intl";
-import { getIronSession } from "iron-session";
+import { getTranslations } from "next-intl/server";
 import { getSession } from "@/lib/session";
 
 async function checkUsernameUnique(username: string) {
@@ -18,7 +16,7 @@ async function checkUsernameUnique(username: string) {
     },
   });
 
-  return existingUsername ? true : false;
+  return !existingUsername;
 }
 
 async function checkEmailUnique(email: string) {
@@ -31,11 +29,16 @@ async function checkEmailUnique(email: string) {
     },
   });
 
-  return existingEmail ? true : false;
+  return !existingEmail;
 }
 
+const REGEX_USERNAME = new RegExp(/^[a-z0-9]+$/);
+const REGEX_PASSWORD = new RegExp(
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
+);
+
 export async function createAccount(prevState: any, formData: FormData) {
-  const t = useTranslations("Auth.Error");
+  const t = await getTranslations("Auth.Error");
 
   const data = {
     username: formData.get("username"),
@@ -48,26 +51,42 @@ export async function createAccount(prevState: any, formData: FormData) {
   const createAccountSchema = z
     .object({
       username: z
-        .string({ required_error: t("username_required_error") })
-        // Only accept combination of lowercases and numbers
-        .regex(/^[a-z0-9]$/, { message: t("username_invalid_error") })
+        .string()
         .trim()
+        .refine((value) => value.length !== 0, {
+          message: t("username_required_error"),
+        })
+        .refine((value) => value.length >= 6, {
+          message: t("username_min_error"),
+        })
+        .refine((value) => value.length <= 12, {
+          message: t("username_max_error"),
+        })
+        // Only accept combination of lowercases and numbers
+        .refine((value) => REGEX_USERNAME.test(value), {
+          message: t("username_invalid_error"),
+        })
         .refine(checkUsernameUnique, { message: t("username_unique_error") }),
       email: z
         .string()
+        .min(1, { message: t("email_required_error") })
         .email({ message: t("email_invalid_error") })
         .trim()
         .refine(checkEmailUnique, { message: t("email_unique_error") }),
       password: z
         .string()
-        .min(8, { message: t("password_min_error") })
-        .max(16, { message: t("password_max_error") })
-        // Include at least one uppercase, lowercase, number and special character.
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!@$%^&*-]).+$/, {
-          message: t("password_invalid_error"),
+        .trim()
+        .refine((value) => value.length !== 0, {
+          message: t("password_required_error"),
         })
+        // Should be 8 ~ 16 characters and nclude at least one uppercase, lowercase, number and special character
+        .refine((value) => REGEX_PASSWORD.test(value), {
+          message: t("password_invalid_error"),
+        }),
+      confirm_password: z
+        .string()
+        .min(1, { message: t("confirm_password_required_error") })
         .trim(),
-      confirm_password: z.string().min(8).max(16).trim(),
     })
     .superRefine(({ password, confirm_password }, ctx) => {
       if (password !== confirm_password) {
@@ -84,7 +103,7 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!validationResult.success) {
     return validationResult.error.flatten();
   } else {
-    const BCRYPT_SALT = process.env.BCRYPT_SALT!;
+    const BCRYPT_SALT = Number(process.env.BCRYPT_SALT)!;
     const hashedPassword = await bcrypt.hash(
       validationResult.data.password,
       BCRYPT_SALT

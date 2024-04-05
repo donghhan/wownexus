@@ -28,16 +28,20 @@
             "confirm_password_field": "Confirm Password"
         },
         "Error": {
+            "username_min_error": "Username should be at least 6 characters",
+            "username_max_error": "Username should not exceed 12 characters",
             "username_required_error": "Username is required",
             "username_invalid_error": "Username can only contain lowercase and number",
             "username_unique_error": "Username is already taken",
+            "username_noexist_error": "Username does not exist",
+            "email_required_error": "Email is required",            
             "email_invalid_error": "Invalid format of email",
             "email_unique_error": "Email is already taken",
             "password_required_error": "Password is required",
-            "password_min_error": "Password should be at least 8 characters",
-            "password_max_error": "Password must not exceed 16 characters",
-            "password_invalid_error": "Password should include at least uppercase, lowercase, number and special character",
-            "password_not_match_error": "Passwords are not same"
+            "password_invalid_error": "Password should 8~16 characters and include at least uppercase, lowercase, number and special character",
+            "confirm_password_required_error": "Confirm password is required",
+            "password_not_match_error": "Passwords are not same",
+            "username_password_not_match_error": "Password does not match"
         }
     },
     "Button": {

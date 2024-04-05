@@ -1,9 +1,26 @@
 "use server";
+import db from "@/lib/db";
 import { z } from "zod";
-import { useTranslations } from "next-intl";
+import bcrypt from "bcrypt";
+import { getTranslations } from "next-intl/server";
+import { getSession } from "@/lib/session";
+import { redirect } from "next/navigation";
+
+async function checkUsername(username: string) {
+  const existingUsername = await db.user.findUnique({
+    where: {
+      username,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  return existingUsername;
+}
 
 export async function login(prevState: any, formData: FormData) {
-  const t = useTranslations("Auth.Error");
+  const t = await getTranslations("Auth.Error");
 
   const data = {
     username: formData.get("username"),
@@ -12,15 +29,51 @@ export async function login(prevState: any, formData: FormData) {
 
   // Validation
   const loginSchema = z.object({
-    username: z.string({ required_error: t("username_required_error") }).trim(),
-    password: z.string({ required_error: t("password_required_error") }).trim(),
+    username: z
+      .string()
+      .toLowerCase()
+      .min(1, { message: t("username_required_error") })
+      .trim()
+      .refine((value) => checkUsername(value), {
+        message: t("username_noexist_error"),
+      }),
+    password: z
+      .string()
+      .min(1, { message: t("password_required_error") })
+      .trim(),
   });
 
-  const validationResult = loginSchema.safeParse(data);
+  const validationResult = await loginSchema.safeParseAsync(data);
 
   if (!validationResult.success) {
     return validationResult.error.flatten();
   } else {
-    console.log(validationResult.data);
+    const user = await db.user.findUnique({
+      where: {
+        username: validationResult.data.username,
+      },
+      select: {
+        id: true,
+        password: true,
+      },
+    });
+
+    const compareResult = await bcrypt.compare(
+      validationResult.data.password,
+      user!.password ?? ""
+    );
+
+    if (compareResult) {
+      const session = await getSession();
+      session.id = user!.id;
+      redirect("/");
+    } else {
+      return {
+        fieldErrors: {
+          username: [],
+          password: [t("username_password_not_match_error")],
+        },
+      };
+    }
   }
 }

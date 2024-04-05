@@ -28,16 +28,20 @@
             "confirm_password_field": "確認密碼"
         },
         "Error": {
+            "username_min_error": "使用者名稱至少應包含 6 個字符",
+            "username_max_error": "使用者名稱不得超過 12 個字符",
             "username_required_error": "使用者名稱是必需的",
             "username_invalid_error": "使用者名稱只能包含小寫字母和數字",
             "username_unique_error": "使用者名稱已被佔用",
+            "username_noexist_error": "使用者名稱不存在",
+            "email_required_error": "電子郵件為必填項",            
             "email_invalid_error": "電子郵件格式無效",
             "email_unique_error": "電子郵件已經被採取",
             "password_required_error": "密碼是必需的",
-            "password_min_error": "密碼應至少為 8 個字符",
-            "password_max_error": "密碼不得超過 16 個字符",
-            "password_invalid_error": "密碼至少應包含大寫字母、小寫字母、數字和特殊字符",
-            "password_not_match_error": "密碼不相同"
+            "password_invalid_error": "密碼應為8~16個字符和至少應包含大寫字母、小寫字母、數字和特殊字符",
+            "confirm_password_required_error": "請重新檢查您的密碼",
+            "password_not_match_error": "密碼不相同",
+            "username_password_not_match_error": "密碼不匹配"
         }
     },
     "Button": {
