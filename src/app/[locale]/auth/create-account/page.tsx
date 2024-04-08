@@ -28,6 +28,7 @@ export default function CreateAccountPage() {
             <InputBox
               type="text"
               name="username"
+              helpText={t("Help.username_help_text")}
               placeholder={t("Field.username_field")}
               errors={state?.fieldErrors.username}
             />
@@ -40,6 +41,7 @@ export default function CreateAccountPage() {
             <InputBox
               type="password"
               name="password"
+              helpText={t("Help.password_help_text")}
               placeholder={t("Field.password_field")}
               errors={state?.fieldErrors.password}
             />

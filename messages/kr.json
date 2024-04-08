@@ -16,6 +16,10 @@
         "create_account": "회원가입",
         "login_username_placeholder": "아이디",
         "login_password_placeholder": "비밀번호",
+        "Help": {
+            "username_help_text": "영소문자 및 숫자로만 이루어진 6~12 글자",
+            "password_help_text": "최소 한 영대문자, 영소문자, 숫자, 특수문자로 이루어진 8~16 글자"
+        },
         "Menu": {
             "still_no_account": "아직 계정이 없나요?",
             "forgot_password": "비밀번호 찾기",
@@ -42,6 +46,9 @@
             "confirm_password_required_error": "비밀번호를 재확인해주세요",
             "password_not_match_error": "비밀번호가 일치하지 않습니다",
             "username_password_not_match_error": "비밀번호가 일치하지 않습니다"
+        },
+        "Success": {
+            "create_account_successful": "회원가입이 완료되었습니다!"
         }
     },
     "Button": {

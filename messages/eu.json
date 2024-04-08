@@ -16,10 +16,14 @@
         "create_account": "Create Account",
         "login_username_placeholder": "Username",
         "login_password_placeholder": "Password",
+        "Help": {
+            "username_help_text": "6~12 characters with combination of lowercase and number only",
+            "password_help_text": "8~12 characters with including at least one uppercase, lowercase, number and special character"
+        },
         "Menu": {
             "still_no_account": "Don't have account yet?",
             "forgot_password": "Forgot password",
-            "already_have_account": "Already have account？"
+            "already_have_account": "Already have account?"
         },
         "Field": {
             "username_field": "Username",
@@ -42,6 +46,9 @@
             "confirm_password_required_error": "Confirm password is required",
             "password_not_match_error": "Passwords are not same",
             "username_password_not_match_error": "Password does not match"
+        },
+        "Success": {
+            "create_account_successful": "Successfully created acount!"
         }
     },
     "Button": {

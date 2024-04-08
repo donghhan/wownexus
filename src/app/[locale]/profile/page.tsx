@@ -1,14 +1,32 @@
-import Navbar from "@/components/Navbar/Navbar";
+import Layout from "@/components/Layout";
+import db from "@/lib/db";
+import { getSession } from "@/lib/session";
+import { notFound } from "next/navigation";
 
-export default function ProfilePage() {
+async function getUserProfile() {
+  const session = await getSession();
+
+  if (session.id) {
+    const user = await db.user.findUnique({
+      where: {
+        id: session.id,
+      },
+    });
+
+    return user;
+  }
+
+  notFound();
+}
+
+export default async function ProfilePage() {
+  const loggedInUser = await getUserProfile();
+
   return (
-    <>
-      <Navbar />
-      <main className="absolute right-0 lg:w-[calc(100%-8rem)] lg:min-h-svh lg:p-10">
-        <section className="bg-gray-800 rounded-xl lg:min-h-48">
-          <div className="p-5"></div>
-        </section>
-      </main>
-    </>
+    <Layout>
+      <section id="profile">
+        <span className="text-white">{loggedInUser?.username}</span>
+      </section>
+    </Layout>
   );
 }

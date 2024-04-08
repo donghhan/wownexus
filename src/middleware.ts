@@ -1,19 +1,21 @@
 import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
-import createMiddleware from "next-intl/middleware";
-import {
-  pathnames,
-  locales,
-  localePrefix,
-} from "@/components/Navbar/LanguageSwitcher/config";
+import "./middleware/i18n.middleware";
 
-export default createMiddleware({
-  defaultLocale: "kr",
-  locales,
-  pathnames,
-  localePrefix,
-});
+export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname === "/profile") {
+    return Response.redirect(new URL("/", request.url));
+  }
+}
 
-export const config = {
-  matcher: ["/", "/(us|kr|tw|eu)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
-};
+// // export default async function middleware(request: NextRequest) {
+// //   const [, locale, ...segments] = request.nextUrl.pathname.split("/");
+
+// //   if (locale !== null && segments.join("/") !== "profile") {
+// //     const usesNewProfile =
+// //       (request.cookies.get("auth")?.value || "false1") === "true";
+
+// //     if (usesNewProfile) {
+// //       request.nextUrl.pathname = `/${locale}/profile`;
+// //     }
+// //   }
+// // }

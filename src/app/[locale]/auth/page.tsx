@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { useFormState } from "react-dom";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -12,7 +12,6 @@ import { login } from "./action";
 export default function LoginPage() {
   const [state, action] = useFormState(login, null);
   const t = useTranslations("Auth");
-  const router = useRouter();
 
   return (
     <Layout>
@@ -55,6 +54,7 @@ export default function LoginPage() {
           </form>
         </div>
       </section>
+      <ToastContainer />
     </Layout>
   );
 }

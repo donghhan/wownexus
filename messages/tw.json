@@ -16,6 +16,10 @@
         "create_account": "註冊",
         "login_username_placeholder": "使用者名",
         "login_password_placeholder": "密碼",
+        "Help": {
+            "username_help_text": "6 至 12 個字符，僅由小寫字母和數字組成",
+            "password_help_text": "8 至 16 個字符，至少應包含大寫字母、小寫字母、數字和特殊字符"
+        },
         "Menu": {
             "still_no_account": "還沒有帳戶？",
             "forgot_password": "忘記密碼",
@@ -42,6 +46,9 @@
             "confirm_password_required_error": "請重新檢查您的密碼",
             "password_not_match_error": "密碼不相同",
             "username_password_not_match_error": "密碼不匹配"
+        },
+        "Success": {
+            "create_account_successful": "您的會員註冊成功"
         }
     },
     "Button": {
