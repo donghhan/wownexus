@@ -1,11 +1,49 @@
-import { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { NextRequest, NextResponse } from "next/server";
+import {
+  pathnames,
+  locales,
+  localePrefix,
+} from "@/components/Navbar/LanguageSwitcher/config";
+import { getSession } from "./lib/session";
 import "./middleware/i18n.middleware";
 
-export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/profile") {
-    return Response.redirect(new URL("/", request.url));
-  }
+interface RouteType {
+  [key: string]: string;
 }
+
+const publicUrls: RouteType = {
+  "/": "/",
+};
+
+export async function middleware(request: NextRequest) {
+  const nextIntlMiddleware = createIntlMiddleware({
+    defaultLocale: "kr",
+    locales,
+    pathnames,
+    localePrefix,
+  });
+
+  const session = await getSession();
+  const exists = publicUrls[request.nextUrl.pathname];
+
+  if (!session.id) {
+    if (!exists) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  } else {
+    if (exists) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
+  const response = nextIntlMiddleware(request);
+  return response;
+}
+
+export const config = {
+  matcher: ["/", "/(us|kr|tw|eu)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
+};
 
 // // export default async function middleware(request: NextRequest) {
 // //   const [, locale, ...segments] = request.nextUrl.pathname.split("/");
