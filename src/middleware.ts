@@ -6,30 +6,36 @@ import {
   localePrefix,
 } from "@/components/Navbar/LanguageSwitcher/config";
 import { getSession } from "./lib/session";
-import "./middleware/i18n.middleware";
+import { redirect } from "./components/Navbar/LanguageSwitcher/navigation";
 
 interface RouteType {
-  [key: string]: string;
+  [key: string]: boolean;
 }
 
 const publicUrls: RouteType = {
-  "/": "/",
+  "/": true,
+  "/auth/create-account": true,
+  "/bnet": true,
+  "/bnet/callback": true,
 };
 
-export async function middleware(request: NextRequest) {
-  const nextIntlMiddleware = createIntlMiddleware({
-    defaultLocale: "kr",
+export default async function middleware(request: NextRequest) {
+  const defaultLocale = "kr";
+
+  const handleI18nRouting = createIntlMiddleware({
     locales,
+    defaultLocale,
     pathnames,
     localePrefix,
   });
+  const response = handleI18nRouting(request);
 
   const session = await getSession();
   const exists = publicUrls[request.nextUrl.pathname];
 
   if (!session.id) {
     if (!exists) {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/auth", request.url));
     }
   } else {
     if (exists) {
@@ -37,23 +43,11 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  const response = nextIntlMiddleware(request);
+  response.headers.set("locale", defaultLocale);
+
   return response;
 }
 
 export const config = {
   matcher: ["/", "/(us|kr|tw|eu)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
 };
-
-// // export default async function middleware(request: NextRequest) {
-// //   const [, locale, ...segments] = request.nextUrl.pathname.split("/");
-
-// //   if (locale !== null && segments.join("/") !== "profile") {
-// //     const usesNewProfile =
-// //       (request.cookies.get("auth")?.value || "false1") === "true";
-
-// //     if (usesNewProfile) {
-// //       request.nextUrl.pathname = `/${locale}/profile`;
-// //     }
-// //   }
-// // }

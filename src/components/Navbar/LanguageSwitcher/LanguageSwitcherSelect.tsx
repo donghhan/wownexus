@@ -1,19 +1,12 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
-import { createLocalizedPathnamesNavigation } from "next-intl/navigation";
-import { locales, pathnames, localePrefix } from "./config";
+import { usePathname, useRouter } from "./navigation";
 
 interface LanguageSwitcherSelectProp {
   children: React.ReactNode;
   defaultValue: string;
 }
-
-const { usePathname, useRouter } = createLocalizedPathnamesNavigation({
-  locales,
-  pathnames,
-  localePrefix,
-});
 
 export default function LanguageSwitcherSelect({
   children,

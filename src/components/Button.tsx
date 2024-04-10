@@ -3,19 +3,19 @@ import { useFormStatus } from "react-dom";
 import { useTranslations } from "next-intl";
 
 interface ButtonProp {
-  text: string;
+  content: string;
 }
 
-export default function Button({ text }: ButtonProp) {
+export default function Button({ content }: ButtonProp) {
   const { pending } = useFormStatus();
   const t = useTranslations("Button");
 
   return (
     <button
-      className={`w-max border-slate-50 bg-zinc-600 text-slate-400 px-14 py-3 rounded-md cursor-pointer hover:bg-zinc-500 active:bg-zinc-600 duration-300 disabled:bg-zinc-700 disabled:cursor-not-allowed`}
+      className={`${"border-slate-50 bg-zinc-600 hover:bg-zinc-500 disabled:bg-zinc-700"} w-full min-h-12 text-center text-slate-400 relative rounded-md cursor-pointer duration-300 disabled:bg-zinc-700 disabled:cursor-not-allowed`}
       disabled={pending}
     >
-      {pending ? t("loading") : text}
+      {pending ? t("loading") : content}
     </button>
   );
 }

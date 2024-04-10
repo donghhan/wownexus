@@ -2,11 +2,12 @@
 import { ToastContainer } from "react-toastify";
 import { useFormState } from "react-dom";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import Layout from "@/components/Layout";
 import InputBox from "@/components/InputBox";
 import Button from "@/components/Button";
+import LinkButton from "@/components/LinkButton";
 import { login } from "./action";
 
 export default function LoginPage() {
@@ -50,7 +51,22 @@ export default function LoginPage() {
                 {t("Menu.forgot_password")}
               </Link>
             </div>
-            <Button text={t("login")} />
+            <Button content={t("login")} />
+            <hr className="border-slate-700 border w-full" />
+            <LinkButton
+              content={
+                <Image
+                  src="/image/bnet_logo.svg"
+                  alt="battlenet logo"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "75%",
+                    margin: "0 auto",
+                  }}
+                />
+              }
+            />
           </form>
         </div>
       </section>
