@@ -54,6 +54,7 @@ export default function LoginPage() {
             <Button content={t("login")} />
             <hr className="border-slate-700 border w-full" />
             <LinkButton
+              href="/auth/bnet"
               content={
                 <Image
                   src="/image/bnet_logo.svg"

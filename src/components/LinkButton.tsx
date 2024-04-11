@@ -2,10 +2,14 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 
 interface LinkButtonProp {
+  href: string;
   content: string | React.ReactNode;
 }
 
-export default function LinkButton({ content }: LinkButtonProp): JSX.Element {
+export default function LinkButton({
+  content,
+  href,
+}: LinkButtonProp): JSX.Element {
   const currentLocale = useLocale();
 
   const params = new URLSearchParams({
@@ -22,7 +26,7 @@ export default function LinkButton({ content }: LinkButtonProp): JSX.Element {
 
   return (
     <Link
-      href="/bnet"
+      href={href}
       className="inline-block w-full min-h-14 relative bg-[#009AE4] rounded-md"
     >
       {content}
