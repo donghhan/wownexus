@@ -56,7 +56,7 @@ export default function CreateAccountPage() {
                 {t("Menu.already_have_account")}
               </Link>
             </div>
-            <Button text={t("create_account")} />
+            <Button content={t("create_account")} />
           </form>
         </div>
       </section>

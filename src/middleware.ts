@@ -12,38 +12,45 @@ interface RouteType {
   [key: string]: boolean;
 }
 
-const publicUrls: RouteType = {
-  "/": true,
+// URLs that authenticated users cannot access
+const authUrls: RouteType = {
+  "/auth": true,
   "/auth/create-account": true,
   "/bnet": true,
   "/bnet/callback": true,
 };
 
-export default async function middleware(request: NextRequest) {
-  const defaultLocale = "kr";
+// URLs that only authenticated users can access
+const protectedUrls: RouteType = {
+  "/apply": true,
+};
 
+export default async function middleware(request: NextRequest) {
   const handleI18nRouting = createIntlMiddleware({
     locales,
-    defaultLocale,
+    defaultLocale: "kr",
     pathnames,
     localePrefix,
   });
   const response = handleI18nRouting(request);
 
   const session = await getSession();
-  const exists = publicUrls[request.nextUrl.pathname];
+  const authUrl = authUrls[request.nextUrl.pathname];
+  const protectedUrl = protectedUrls[request.nextUrl.pathname];
 
   if (!session.id) {
-    if (!exists) {
+    // When user is NOT logged in
+    // If this is protected url
+    if (protectedUrl) {
       return NextResponse.redirect(new URL("/auth", request.url));
     }
   } else {
-    if (exists) {
+    // When user IS logged in
+    // If this is auth url
+    if (authUrl) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }
-
-  response.headers.set("locale", defaultLocale);
 
   return response;
 }
