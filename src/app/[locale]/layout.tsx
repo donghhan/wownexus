@@ -1,5 +1,4 @@
 import "../globals.css";
-import { inter, notoSansKR, notoSansHK } from "@/styles/variables/fonts";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
 interface RootLayoutProp {
@@ -15,14 +14,23 @@ export default function RootLayout({
 }: RootLayoutProp) {
   const messages = useMessages();
 
+  let font;
+  switch (locale) {
+    case "us" || "eu":
+      font = "font-inter";
+      break;
+    case "tw":
+      font = "font-notoSansHK";
+      break;
+    default:
+      font = "font-notoSansKR";
+      break;
+  }
+
   return (
     <NextIntlClientProvider messages={messages}>
       <html lang={locale} suppressHydrationWarning={true}>
-        <body
-          className={`${inter.className} ${notoSansKR.className} ${notoSansHK.className} bg-gray800`}
-        >
-          {children}
-        </body>
+        <body className={`${font} bg-gray800`}>{children}</body>
       </html>
     </NextIntlClientProvider>
   );

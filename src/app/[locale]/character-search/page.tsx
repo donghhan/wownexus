@@ -1,14 +1,12 @@
-import Navbar from "@/components/Navbar/Navbar";
+import Layout from "@/components/Layout";
+import Form from "@/components/Form/Form";
 
 export default function CharacterSearchPage() {
   return (
-    <>
-      <Navbar />
-      <main className="absolute right-0 lg:w-[calc(100%-8rem)] lg:min-h-svh lg:p-10">
-        <section className="bg-gray-800 rounded-xl lg:min-h-48">
-          <div className="p-5"></div>
-        </section>
-      </main>
-    </>
+    <Layout>
+      <section className="bg-gray-800 rounded-xl w-[90%] lg:min-h-48">
+        <Form />
+      </section>
+    </Layout>
   );
 }

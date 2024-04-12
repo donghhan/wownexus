@@ -51,26 +51,26 @@ export default function Navbar(): JSX.Element {
       src: "/icon/profile.svg",
       id: "profile",
       hoverText: t("profile"),
-      href: "/profile",
+      href: "/character-search",
     },
-    // {
-    //   src: "/icon/labyrinth.svg",
-    //   id: "dungeon",
-    //   hoverText: t("dungeon"),
-    //   href: "/dungeon",
-    // },
-    // {
-    //   src: "/icon/apply.svg",
-    //   id: "apply",
-    //   hoverText: t("apply"),
-    //   href: "/apply",
-    // },
-    // {
-    //   id: "pvp",
-    //   src: "/icon/sword.svg",
-    //   href: "/pvp",
-    //   hoverText: t("pvp"),
-    // },
+    {
+      src: "/icon/labyrinth.svg",
+      id: "dungeon",
+      hoverText: t("dungeon"),
+      href: "/dungeon",
+    },
+    {
+      id: "pvp",
+      src: "/icon/sword.svg",
+      href: "/pvp",
+      hoverText: t("pvp"),
+    },
+    {
+      src: "/icon/apply.svg",
+      id: "apply",
+      hoverText: t("apply"),
+      href: "/apply",
+    },
   ];
 
   return (

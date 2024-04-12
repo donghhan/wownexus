@@ -6,11 +6,18 @@ import {
   localePrefix,
 } from "@/components/Navbar/LanguageSwitcher/config";
 import { getSession } from "./lib/session";
-import { redirect } from "./components/Navbar/LanguageSwitcher/navigation";
 
 interface RouteType {
   [key: string]: boolean;
 }
+
+const publicUrls: RouteType = {
+  "/": true,
+  "/auth": true,
+  "/auth/create-account": true,
+  "/bnet": true,
+  "/bnet/callback": true,
+};
 
 // URLs that authenticated users cannot access
 const authUrls: RouteType = {
@@ -26,28 +33,28 @@ const protectedUrls: RouteType = {
 };
 
 export default async function middleware(request: NextRequest) {
+  const defaultLocale = "kr";
   const handleI18nRouting = createIntlMiddleware({
     locales,
-    defaultLocale: "kr",
+    defaultLocale,
     pathnames,
     localePrefix,
   });
   const response = handleI18nRouting(request);
 
   const session = await getSession();
-  const authUrl = authUrls[request.nextUrl.pathname];
-  const protectedUrl = protectedUrls[request.nextUrl.pathname];
+  const pathname = request.nextUrl.pathname;
 
+  // When user is NOT logged in
   if (!session.id) {
-    // When user is NOT logged in
     // If this is protected url
-    if (protectedUrl) {
+    if (protectedUrls[pathname]) {
       return NextResponse.redirect(new URL("/auth", request.url));
     }
   } else {
     // When user IS logged in
     // If this is auth url
-    if (authUrl) {
+    if (authUrls[pathname]) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }

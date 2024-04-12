@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+HK:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap");
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../public/fonts/Inter.ttf");
+}
+
+@font-face {
+  font-family: "NotoSansHK";
+  src: url("../../public/fonts/NotoSansHK.ttf");
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("../../public/fonts/NotoSansKR.ttf");
+}

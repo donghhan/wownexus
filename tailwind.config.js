@@ -25,6 +25,11 @@ module.exports = {
         gray30: "#f6f6f6",
         gray20: "#f9f9f9",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        notoSansHK: ["Noto Sans HK", "sans-serif"],
+        notoSansKR: ["Noto Sans KR", "sans-serif"],
+      },
     },
   },
   plugins: [],
