@@ -18,7 +18,7 @@ export default function LoginPage() {
     <Layout>
       <section
         id="login"
-        className="w-full flex flex-col justify-center items-center"
+        className="w-full h-[calc(100svh-5rem)] flex flex-col justify-center items-center"
       >
         <div className="w-full max-w-[50rem] min-h-40 flex flex-col items-center">
           <span className="text-slate-400 text-[2.5rem] mb-10">

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import "../globals.css";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 
@@ -7,6 +8,14 @@ interface RootLayoutProp {
     locale: string;
   };
 }
+
+export const metatdata: Metadata = {
+  title: {
+    template: "%s | Wownexus",
+    default: "Wownexus",
+  },
+  description: "Useful information of WoW classic in your hand at ease.",
+};
 
 export default function RootLayout({
   children,

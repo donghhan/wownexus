@@ -1,5 +1,13 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+
+interface RealmSelectorDataProp {}
+
+function RealmSelectorData() {
+  const currentLocale = useLocale();
+
+  return <li></li>;
+}
 
 export default function RealmSelector() {
   const t = useTranslations("SearchForm");
@@ -7,7 +15,7 @@ export default function RealmSelector() {
   return (
     <div className="flex items-center gap-5">
       <span className="text-slate-400 mr-5">{t("choose_realm")}</span>
-      <div className="flex gap-5">
+      <ul className="flex gap-5">
         <div>
           <input
             id="wotlk"
@@ -48,7 +56,7 @@ export default function RealmSelector() {
             />
           </label>
         </div>
-      </div>
+      </ul>
     </div>
   );
 }
