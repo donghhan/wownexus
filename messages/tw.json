@@ -12,7 +12,7 @@
         "pvp": "PVP"
     },
     "Auth": {
-        "login": "登录",
+        "login": "登記",
         "create_account": "註冊",
         "login_username_placeholder": "使用者名",
         "login_password_placeholder": "密碼",
@@ -26,20 +26,18 @@
             "already_have_account": "已有帳戶？"
         },
         "Field": {
-            "username_field": "使用者名",
+            "nickname_field": "暱稱",
             "email_field": "E-mail",
             "password_field": "密碼",
             "confirm_password_field": "確認密碼"
         },
         "Error": {
-            "username_min_error": "使用者名稱至少應包含 6 個字符",
-            "username_max_error": "使用者名稱不得超過 12 個字符",
-            "username_required_error": "使用者名稱是必需的",
-            "username_invalid_error": "使用者名稱只能包含小寫字母和數字",
-            "username_unique_error": "使用者名稱已被佔用",
-            "username_noexist_error": "使用者名稱不存在",
+            "nickname_max_error": "暱稱稱不得超過 12 個字符",
+            "nickname_invalid_error": "暱稱稱只能包含小寫字母和數字",
+            "nickname_unique_error": "暱稱稱已被佔用",
             "email_required_error": "電子郵件為必填項",            
             "email_invalid_error": "電子郵件格式無效",
+            "email_noexist_error": "沒有電子郵件",
             "email_unique_error": "電子郵件已經被採取",
             "password_required_error": "密碼是必需的",
             "password_invalid_error": "密碼應為8~16個字符和至少應包含大寫字母、小寫字母、數字和特殊字符",

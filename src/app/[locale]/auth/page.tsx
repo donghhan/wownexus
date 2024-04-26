@@ -30,9 +30,9 @@ export default function LoginPage() {
           >
             <InputBox
               type="text"
-              name="username"
-              placeholder={t("Field.username_field")}
-              errors={state?.fieldErrors?.username}
+              name="email"
+              placeholder={t("Field.email_field")}
+              errors={state?.fieldErrors?.email}
             />
             <InputBox
               type="password"

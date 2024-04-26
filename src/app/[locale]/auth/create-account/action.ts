@@ -7,7 +7,7 @@ import { getTranslations } from "next-intl/server";
 import { getSession } from "@/lib/session";
 import { toast } from "react-toastify";
 
-const REGEX_USERNAME = new RegExp(/^[a-z0-9]+$/);
+const REGEX_NICKNAME = new RegExp(/^[a-z0-9]+$/);
 const REGEX_PASSWORD = new RegExp(
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
 );
@@ -16,7 +16,7 @@ export async function createAccount(prevState: any, formData: FormData) {
   const t = await getTranslations("Auth.Error");
 
   const data = {
-    username: formData.get("username"),
+    nickname: formData.get("nickname"),
     email: formData.get("email"),
     password: formData.get("password"),
     confirm_password: formData.get("confirm_password"),
@@ -25,22 +25,17 @@ export async function createAccount(prevState: any, formData: FormData) {
   // Validation
   const createAccountSchema = z
     .object({
-      username: z
+      nickname: z
         .string()
         .trim()
-        .refine((value) => value.length !== 0, {
-          message: t("username_required_error"),
+        .optional()
+        .refine((value) => value !== undefined && value.length <= 12, {
+          message: t("nickname_max_error"),
         })
-        .refine((value) => value.length >= 6, {
-          message: t("username_min_error"),
+        .refine((value) => value !== undefined && REGEX_NICKNAME.test(value), {
+          message: t("nickname_invalid_error"),
         })
-        .refine((value) => value.length <= 12, {
-          message: t("username_max_error"),
-        })
-        // Only accept combination of lowercases and numbers
-        .refine((value) => REGEX_USERNAME.test(value), {
-          message: t("username_invalid_error"),
-        }),
+        .or(z.literal("")),
       email: z
         .string()
         .min(1, { message: t("email_required_error") })
@@ -61,11 +56,11 @@ export async function createAccount(prevState: any, formData: FormData) {
         .min(1, { message: t("confirm_password_required_error") })
         .trim(),
     })
-    // Check if username is unique
-    .superRefine(async ({ username }, ctx) => {
+    // Check if nickname is unique
+    .superRefine(async ({ nickname }, ctx) => {
       const user = await db.user.findUnique({
         where: {
-          username,
+          nickname,
         },
         select: {
           id: true,
@@ -75,8 +70,8 @@ export async function createAccount(prevState: any, formData: FormData) {
       if (user) {
         ctx.addIssue({
           code: "custom",
-          message: t("username_unique_error"),
-          path: ["username"],
+          message: t("nickname_unique_error"),
+          path: ["nickname"],
           fatal: true,
         });
         return z.NEVER;
@@ -112,7 +107,6 @@ export async function createAccount(prevState: any, formData: FormData) {
   const validationResult = await createAccountSchema.safeParseAsync(data);
 
   if (!validationResult.success) {
-    console.log(validationResult.error.flatten());
     return validationResult.error.flatten();
   } else {
     const BCRYPT_SALT = Number(process.env.BCRYPT_SALT)!;
@@ -123,7 +117,7 @@ export async function createAccount(prevState: any, formData: FormData) {
 
     const newUser = await db.user.create({
       data: {
-        username: validationResult.data.username,
+        nickname: validationResult.data.nickname,
         email: validationResult.data.email,
         password: hashedPassword,
       },

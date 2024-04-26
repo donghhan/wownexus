@@ -26,20 +26,18 @@
             "already_have_account": "Already have account?"
         },
         "Field": {
-            "username_field": "Username",
+            "nickname_field": "Nickname",
             "email_field": "E-mail",
             "password_field": "Password",
             "confirm_password_field": "Confirm Password"
         },
         "Error": {
-            "username_min_error": "Username should be at least 6 characters",
-            "username_max_error": "Username should not exceed 12 characters",
-            "username_required_error": "Username is required",
-            "username_invalid_error": "Username can only contain lowercase and number",
-            "username_unique_error": "Username is already taken",
-            "username_noexist_error": "Username does not exist",
-            "email_required_error": "Email is required",            
+            "nickname_max_error": "Nickname should not exceed 12 characters",
+            "nickname_invalid_error": "Nickname can only contain lowercase and number",
+            "nickname_unique_error": "Nickname is already taken",
+            "email_required_error": "Email is required",     
             "email_invalid_error": "Invalid format of email",
+            "email_noexist_error": "There is no such email",
             "email_unique_error": "Email is already taken",
             "password_required_error": "Password is required",
             "password_invalid_error": "Password should 8~16 characters and include at least uppercase, lowercase, number and special character",

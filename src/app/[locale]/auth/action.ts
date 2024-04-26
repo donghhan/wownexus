@@ -6,36 +6,36 @@ import { getTranslations } from "next-intl/server";
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 
-async function checkUsername(username: string) {
-  const existingUsername = await db.user.findUnique({
+async function checkEmail(email: string) {
+  const existingEmail = await db.user.findUnique({
     where: {
-      username,
+      email,
     },
     select: {
       id: true,
     },
   });
 
-  return existingUsername;
+  return existingEmail;
 }
 
 export async function login(prevState: any, formData: FormData) {
   const t = await getTranslations("Auth.Error");
 
   const data = {
-    username: formData.get("username"),
+    email: formData.get("email"),
     password: formData.get("password"),
   };
 
   // Validation
   const loginSchema = z.object({
-    username: z
+    email: z
       .string()
       .toLowerCase()
-      .min(1, { message: t("username_required_error") })
+      .min(1, { message: t("email_required_error") })
       .trim()
-      .refine((value) => checkUsername(value), {
-        message: t("username_noexist_error"),
+      .refine((value) => checkEmail(value), {
+        message: t("email_noexist_error"),
       }),
     password: z
       .string()
@@ -50,7 +50,7 @@ export async function login(prevState: any, formData: FormData) {
   } else {
     const user = await db.user.findUnique({
       where: {
-        username: validationResult.data.username,
+        email: validationResult.data.email,
       },
       select: {
         id: true,
@@ -71,7 +71,7 @@ export async function login(prevState: any, formData: FormData) {
     } else {
       return {
         fieldErrors: {
-          username: [],
+          email: [],
           password: [t("username_password_not_match_error")],
         },
       };
