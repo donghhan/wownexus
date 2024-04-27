@@ -6,7 +6,7 @@ export default function InputBox({
 }: InputBoxProp) {
   return (
     <>
-      <div className="w-full max-w-[15rem]">
+      <div className="w-full">
         <input
           name={name}
           {...props}

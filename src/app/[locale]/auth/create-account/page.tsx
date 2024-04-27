@@ -10,6 +10,8 @@ import FileInputBox from "@/components/FileInputBox";
 
 export default function CreateAccountPage() {
   const [state, action] = useFormState(createAccount, null);
+  console.log(state);
+
   const t = useTranslations("Auth");
 
   return (
@@ -26,38 +28,26 @@ export default function CreateAccountPage() {
             action={action}
             className="w-full h-full flex flex-col items-center gap-5"
           >
-            <div className="flex flex-col gap-10 lg:flex-row">
-              <div className="w-full max-w-[20rem] flex flex-col gap-5">
-                <InputBox
-                  type="text"
-                  name="email"
-                  placeholder={`${t("Field.email_field")} *`}
-                  errors={state?.fieldErrors.email}
-                />
-                <InputBox
-                  type="password"
-                  name="password"
-                  helpText={t("Help.password_help_text")}
-                  placeholder={`${t("Field.password_field")} *`}
-                  errors={state?.fieldErrors.password}
-                />
-                <InputBox
-                  type="password"
-                  name="confirm_password"
-                  placeholder={`${t("Field.confirm_password_field")} *`}
-                  errors={state?.fieldErrors.confirm_password}
-                />
-              </div>
-              <hr className="border-[0.05rem] border-slate-500 lg:h-[10rem] lg:self-center" />
-              <div className="w-full max-w-[20rem] flex flex-col gap-5">
-                <InputBox
-                  type="text"
-                  name="nickname"
-                  placeholder={t("Field.nickname_field")}
-                  errors={state?.fieldErrors.nickname}
-                />
-                <FileInputBox name="avatar" />
-              </div>
+            <div className="w-full max-w-[20rem] flex flex-col gap-5">
+              <InputBox
+                type="text"
+                name="email"
+                placeholder={`${t("Field.email_field")} *`}
+                errors={state?.fieldErrors.email}
+              />
+              <InputBox
+                type="password"
+                name="password"
+                helpText={t("Help.password_help_text")}
+                placeholder={`${t("Field.password_field")} *`}
+                errors={state?.fieldErrors.password}
+              />
+              <InputBox
+                type="password"
+                name="confirm_password"
+                placeholder={`${t("Field.confirm_password_field")} *`}
+                errors={state?.fieldErrors.confirm_password}
+              />
             </div>
             <div className="text-slate-400 flex flex-col items-center justify-center w-full max-w-[20rem] gap-5">
               <Link href="/auth" className="hover:text-slate-300 duration-500">

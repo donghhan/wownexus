@@ -3,3 +3,7 @@ interface InputBoxProp extends React.InputHTMLAttributes<HTMLInputElement> {
   helpText?: string;
   errors?: string[];
 }
+
+interface FileInputBoxProp extends React.InputHTMLAttributes<HTMLInputElement> {
+  onFileChange: (event: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+}

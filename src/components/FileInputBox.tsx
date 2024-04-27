@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useFormState } from "react-dom";
 import Image from "next/image";
-import { getUploadURL } from "@/app/[locale]/auth/create-account/action";
+import { createAccount } from "@/app/[locale]/auth/create-account/action";
 
 export default function FileInputBox({
   name,
@@ -26,14 +25,30 @@ export default function FileInputBox({
     const file = files[0];
     const url = URL.createObjectURL(file);
     setPreviewImage(url);
+  };
 
-    const { success, result } = await getUploadURL();
+  const interceptAction = async (_: any, formData: FormData) => {
+    const file = formData.get("avatar");
 
-    if (success) {
-      const { id, uploadUrl } = result;
-      setUploadURL(uploadUrl);
-      setImageID(id);
+    if (!file) {
+      return;
     }
+
+    const cloudFlareForm = new FormData();
+    cloudFlareForm.append("file", file);
+
+    const response = await fetch(uploadURL, {
+      method: "POST",
+      body: cloudFlareForm,
+    });
+
+    if (response.status !== 200) {
+      return;
+    }
+
+    const avatarUrl = `https://imagedelivery.net/VSbHFn_i-CgtiF2Fcde6Ww/${imageID}/`;
+    formData.set("avatar", avatarUrl);
+    return createAccount(_, formData);
   };
 
   return (
