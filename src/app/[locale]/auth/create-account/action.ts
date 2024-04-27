@@ -1,4 +1,5 @@
 "use server";
+import fs from "fs/promises";
 import db from "@/lib/db";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -11,6 +12,34 @@ const REGEX_NICKNAME = new RegExp(/^[a-z0-9]+$/);
 const REGEX_PASSWORD = new RegExp(
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
 );
+const MAX_FILE_SIZE = 5000000;
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+
+export async function getUploadURL() {
+  const ACCOUNT_ID: string = process.env.CLOUDFLARE_ACCOUNT_ID!;
+  const API_TOKEN: string = process.env.CLOUDFLARE_API_TOKEN!;
+
+  try {
+    const response = fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/images/v2/direct_upload`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+        },
+      }
+    );
+    const data = (await response).json();
+    return data;
+  } catch (error: any) {
+    console.error("Error: ", error);
+  }
+}
 
 export async function createAccount(prevState: any, formData: FormData) {
   const t = await getTranslations("Auth.Error");
@@ -20,6 +49,7 @@ export async function createAccount(prevState: any, formData: FormData) {
     email: formData.get("email"),
     password: formData.get("password"),
     confirm_password: formData.get("confirm_password"),
+    avatar: formData.get("avatar"),
   };
 
   // Validation
@@ -55,6 +85,7 @@ export async function createAccount(prevState: any, formData: FormData) {
         .string()
         .min(1, { message: t("confirm_password_required_error") })
         .trim(),
+      avatar: z.string().trim().optional(),
     })
     // Check if nickname is unique
     .superRefine(async ({ nickname }, ctx) => {
@@ -103,6 +134,14 @@ export async function createAccount(prevState: any, formData: FormData) {
       message: t("password_not_match_error"),
       path: ["confirm_password"],
     });
+
+  if (data.avatar instanceof File) {
+    const avatarData = await data.avatar.arrayBuffer();
+    await fs.appendFile(
+      `./public/${data.avatar.name}`,
+      Buffer.from(avatarData)
+    );
+  }
 
   const validationResult = await createAccountSchema.safeParseAsync(data);
 

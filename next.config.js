@@ -7,6 +7,13 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "imagedelivery.net",
+      },
+    ],
+  },
 };
 
 module.exports = withNextIntl(nextConfig);

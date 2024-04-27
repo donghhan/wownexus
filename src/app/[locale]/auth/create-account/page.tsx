@@ -31,24 +31,24 @@ export default function CreateAccountPage() {
                 <InputBox
                   type="text"
                   name="email"
-                  placeholder={t("Field.email_field")}
+                  placeholder={`${t("Field.email_field")} *`}
                   errors={state?.fieldErrors.email}
                 />
                 <InputBox
                   type="password"
                   name="password"
                   helpText={t("Help.password_help_text")}
-                  placeholder={t("Field.password_field")}
+                  placeholder={`${t("Field.password_field")} *`}
                   errors={state?.fieldErrors.password}
                 />
                 <InputBox
                   type="password"
                   name="confirm_password"
-                  placeholder={t("Field.confirm_password_field")}
+                  placeholder={`${t("Field.confirm_password_field")} *`}
                   errors={state?.fieldErrors.confirm_password}
                 />
               </div>
-              <hr className="border-[0.05rem] border-slate-500 w-full max-w-[20rem] lg:w-0 lg:h-full" />
+              <hr className="border-[0.05rem] border-slate-500 lg:h-[10rem] lg:self-center" />
               <div className="w-full max-w-[20rem] flex flex-col gap-5">
                 <InputBox
                   type="text"
@@ -56,7 +56,7 @@ export default function CreateAccountPage() {
                   placeholder={t("Field.nickname_field")}
                   errors={state?.fieldErrors.nickname}
                 />
-                {/* <FileInputBox /> */}
+                <FileInputBox name="avatar" />
               </div>
             </div>
             <div className="text-slate-400 flex flex-col items-center justify-center w-full max-w-[20rem] gap-5">
