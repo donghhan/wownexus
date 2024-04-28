@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../Navbar/LanguageSwitcher/LanguageSwitcher";
-import AuthHeader from "../AuthHeader";
 
 export default function HamburgerMenu() {
   const [hamrbugerMenuOpen, setHamburgerMenuOpen] = useState<boolean>(false);
@@ -17,24 +16,24 @@ export default function HamburgerMenu() {
       href: "/profile",
       text: t("profile"),
     },
-    // {
-    //   id: "dungeon",
-    //   src: "/icon/labyrinth.svg",
-    //   href: "/dungeon",
-    //   text: t("dungeon"),
-    // },
-    // {
-    //   id: "apply",
-    //   src: "/icon/apply.svg",
-    //   href: "/apply",
-    //   text: t("apply"),
-    // },
-    // {
-    //   id: "pvp",
-    //   src: "/icon/sword.svg",
-    //   href: "/pvp",
-    //   text: t("pvp"),
-    // },
+    {
+      id: "dungeon",
+      src: "/icon/labyrinth.svg",
+      href: "/dungeon",
+      text: t("dungeon"),
+    },
+    {
+      id: "apply",
+      src: "/icon/apply.svg",
+      href: "/apply",
+      text: t("apply"),
+    },
+    {
+      id: "pvp",
+      src: "/icon/sword.svg",
+      href: "/pvp",
+      text: t("pvp"),
+    },
   ];
 
   return (
@@ -52,7 +51,6 @@ export default function HamburgerMenu() {
               height={30}
             />
           </button>
-          <AuthHeader />
         </nav>
       </header>
       <aside
@@ -73,12 +71,14 @@ export default function HamburgerMenu() {
           </button>
         </div>
         <div>
-          <Image
-            src="/logo.png"
-            alt="logo illustration"
-            width={150}
-            height={150}
-          />
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="logo illustration"
+              width={150}
+              height={150}
+            />
+          </Link>
         </div>
         <LanguageSwitcher />
         <ul className="w-3/4 flex flex-col items-center gap-y-5">
