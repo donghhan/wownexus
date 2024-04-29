@@ -6,7 +6,7 @@
         "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} eu {🇪🇺} other {Unknown}}"
     },
     "Navbar": {
-        "profile": "輪廓",
+        "player": "玩家搜尋",
         "dungeon": "地城",
         "apply": "申請",
         "pvp": "PVP"
@@ -57,16 +57,19 @@
         "choose_realm": "領域", 
         "realm_explanation": "經典時期 = 專家模式 + 季節性",
         "input_text_label": "搜尋詞",
-        "choose_server": "伺服器",
-        "please_choose_server": "選擇伺服器"
+        "server": "伺服器",
+        "server_blank_placeholder": "選擇伺服器",
+        "Error": {
+            "realm_required_error": "必須選擇領域"
+        }
     },
-    "ProfilePage": {
+    "CharacterSearchPage": {
         "character_name_placeholder": "請輸入您的角色名稱",
         "character_name_input_label": "角色",
         "Error": {
             "invalid_type_realm": "必須提供領域",
             "invalid_type_server": "必須提供必須提供",
-            "required_error": "必須提供角色名稱才能搜尋",
+            "character_name_required_error": "必須提供角色名稱才能搜尋",
             "min_length_error": "角色名稱至少應有2個字符.",
             "max_length_error": "角色名稱不能超過8個字符.",
             "invalid_characters": "不允許使用特殊字元、空格和數字."

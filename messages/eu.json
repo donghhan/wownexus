@@ -6,7 +6,7 @@
         "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} eu {🇪🇺} other {Unknown}}"
     },
     "Navbar": {
-        "profile": "Profile",
+        "player": "Player Search",
         "dungeon": "Dungeon",
         "apply": "Apply",
         "pvp": "PVP"
@@ -57,16 +57,20 @@
         "choose_realm": "Realm",  
         "realm_explanation": "ERA = Hardcore + SoD",
         "input_text_label": "Keyword",
-        "choose_server": "Server",
-        "please_choose_server": "Please choose server"
+        "server": "Server",
+        "server_blank_placeholder": "Please choose server",
+        "Error": {
+            "realm_required_error": "Must choose realm",
+            "server_required_error": "Must choose server"
+        }
     },
-    "ProfilePage": {
+    "CharacterSearchPage": {
         "character_name_placeholder": "Please input character name",
         "character_name_input_label": "Character",
         "Error": {
             "invalid_type_realm": "Choose realm",
             "invalid_type_server": "Choose server",
-            "required_error": "Must provide character name to search.",
+            "character_name_required_error": "Must provide character name to search",
             "min_length_error": "Character name should be at least 2 characters.",
             "max_length_error": "Character name should not exceed 12 characters.",
             "invalid_characters": "Special characters, whitespaces and numbers are not allowed."

@@ -6,7 +6,7 @@
         "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} eu {🇪🇺} other {Unknown}}"
     },
     "Navbar": {
-        "profile": "프로필",
+        "player": "유저 검색",
         "dungeon": "던전",
         "apply": "신청",
         "pvp": "PVP"
@@ -57,16 +57,19 @@
         "choose_realm": "모드",    
         "realm_explanation": "시대 = 하드코어 + 디스커버리",
         "input_text_label": "검색어",
-        "choose_server": "서버",
-        "please_choose_server": "서버를 선택하세요"
+        "server": "서버",
+        "server_blank_placeholder": "서버를 선택하세요",
+        "Error": {
+            "realm_required_error": "모드를 선택하세요"
+        }
     },
-    "ProfilePage": {
+    "CharacterSearchPage": {
         "character_name_placeholder": "캐릭터명을 입력하세요",
         "character_name_input_label": "캐릭터명",
         "Error": {
             "invalid_type_realm": "모드를 선택하세요",
             "invalid_type_server": "서버를 선택하세요",
-            "required_error": "검색할 캐릭터명을 입력하세요.",
+            "character_name_required_error": "검색할 캐릭터명을 입력하세요.",
             "min_length_error": "캐릭터명은 최소 2글자 이상이어야 합니다.",
             "max_length_error": "캐릭터명은 최대 12글자 이하여야 합니다.",
             "invalid_characters": "특수문자, 숫자 및 공백은 포함될 수 없습니다."

@@ -1,16 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import useDropdown from "@/hooks/useDropdown";
 
-interface ServerSelectordataProp {}
+interface ServerSelectorProp {}
 
-function ServerSelectorData() {
-  return <li></li>;
-}
-
-export default function ServerSelector({ currentLocale, errors }: InputProp) {
+export default function ServerSelector({ errors }: InputProp) {
   const t = useTranslations("SearchForm");
   const [server, setServer] = useState<string | undefined>(undefined);
   const { isOpen, dropdownRef, toggleDropDown } = useDropdown();
@@ -24,7 +20,7 @@ export default function ServerSelector({ currentLocale, errors }: InputProp) {
 
   return (
     <div className="flex items-center gap-5">
-      <span className="text-slate-400 mr-5">{t("choose_server")}</span>
+      <span className="text-slate-400 mr-5">{t("server")}</span>
       <div
         onClick={toggleDropDown}
         className={`${
@@ -36,7 +32,7 @@ export default function ServerSelector({ currentLocale, errors }: InputProp) {
             errors ? "text-signature-red" : "text-white"
           } text-sm max-w-30`}
         >
-          {server || t("please_choose_server")}
+          {server || t("server_blank_placeholder")}
         </span>
         <Image
           src="/icon/chevron.svg"

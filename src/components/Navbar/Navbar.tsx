@@ -46,32 +46,7 @@ function LinkWrapper({
 export default function Navbar(): JSX.Element {
   const t = useTranslations("Navbar");
 
-  const linkData = [
-    {
-      src: "/icon/profile.svg",
-      id: "profile",
-      hoverText: t("profile"),
-      href: "/character-search",
-    },
-    {
-      src: "/icon/labyrinth.svg",
-      id: "dungeon",
-      hoverText: t("dungeon"),
-      href: "/dungeon",
-    },
-    {
-      id: "pvp",
-      src: "/icon/sword.svg",
-      href: "/pvp",
-      hoverText: t("pvp"),
-    },
-    {
-      src: "/icon/apply.svg",
-      id: "apply",
-      hoverText: t("apply"),
-      href: "/apply",
-    },
-  ];
+  const linkData = ["player", "dungeon", "pvp", "apply"];
 
   return (
     <aside className="absolute left-0 hidden w-full h-20 flex-row items-center p-10 gap-16 lg:flex lg:w-32 lg:h-screen lg:flex-col">
@@ -84,11 +59,11 @@ export default function Navbar(): JSX.Element {
       <ul className="flex gap-6 items-center lg:flex-col">
         {linkData.map((i) => (
           <LinkWrapper
-            key={i.id}
-            src={i.src}
-            alt={i.id}
-            href={i.href}
-            hoverText={i.hoverText}
+            key={i}
+            src={`/icon/${i}.svg`}
+            alt={`${i} icon illustration`}
+            href={`/${i}`}
+            hoverText={t(i)}
           />
         ))}
       </ul>

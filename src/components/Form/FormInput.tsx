@@ -17,7 +17,7 @@ export default function FormInput({
           className={`${
             errors
               ? "border-signature-red border-2"
-              : "bnorder-transparent border-0"
+              : "border-transparent border-0"
           } rounded-md bg-slate-600 text-white py-2 px-4 outline-none`}
           {...props}
         />

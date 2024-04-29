@@ -9,32 +9,7 @@ export default function HamburgerMenu() {
   const [hamrbugerMenuOpen, setHamburgerMenuOpen] = useState<boolean>(false);
   const t = useTranslations("Navbar");
 
-  const hamburgerMenuLinks = [
-    {
-      id: "profile",
-      src: "/icon/profile.svg",
-      href: "/profile",
-      text: t("profile"),
-    },
-    {
-      id: "dungeon",
-      src: "/icon/labyrinth.svg",
-      href: "/dungeon",
-      text: t("dungeon"),
-    },
-    {
-      id: "apply",
-      src: "/icon/apply.svg",
-      href: "/apply",
-      text: t("apply"),
-    },
-    {
-      id: "pvp",
-      src: "/icon/sword.svg",
-      href: "/pvp",
-      text: t("pvp"),
-    },
-  ];
+  const hamburgerMenuLinks = ["player", "dungeon", "pvp", "apply"];
 
   return (
     <>
@@ -84,15 +59,15 @@ export default function HamburgerMenu() {
         <ul className="w-3/4 flex flex-col items-center gap-y-5">
           {hamburgerMenuLinks.map((i) => (
             <li
-              key={i.id}
+              key={i}
               className="w-full max-w-64 py-3 flex justify-center rounded-lg hover:bg-[#51525f] transition duration-300"
             >
-              <Image src={i.src} alt={i.id} width={35} height={35} />
+              <Image src={`/icon/${i}.svg`} alt={i} width={35} height={35} />
               <Link
-                href={i.href}
+                href={`/${i}`}
                 className="w-full max-w-32 text-white text-xl gap-x-8 text-center"
               >
-                {i.text}
+                {t(i)}
               </Link>
             </li>
           ))}
