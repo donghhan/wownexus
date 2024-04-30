@@ -60,7 +60,9 @@
         "server": "伺服器",
         "server_blank_placeholder": "選擇伺服器",
         "Error": {
-            "realm_required_error": "必須選擇領域"
+            "realm_required_error": "必須選擇領域",
+            "server_required_error": "必須選擇伺服器",
+            "keyword_required_error": "必須提供關鍵字"
         }
     },
     "CharacterSearchPage": {

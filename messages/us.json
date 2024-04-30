@@ -60,7 +60,9 @@
         "server": "Server",
         "server_blank_placeholder": "Please choose server",
         "Error": {
-            "realm_required_error": "Must choose realm"
+            "realm_required_error": "Must choose realm",
+            "server_required_error": "Must choose server",
+            "keyword_required_error": "Must provide keyword"
         }
     },
     "CharacterSearchPage": {

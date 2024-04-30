@@ -60,7 +60,8 @@
         "server": "서버",
         "server_blank_placeholder": "서버를 선택하세요",
         "Error": {
-            "realm_required_error": "모드를 선택하세요"
+            "realm_required_error": "모드를 선택하세요",
+            "keyword_required_error": "검색어를 입력하세요"
         }
     },
     "CharacterSearchPage": {
