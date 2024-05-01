@@ -1,13 +1,23 @@
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 
-export default function RealmSelector({ errors, ...props }: InputProp) {
+interface RealmSelectorProp {
+  setRealm: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
+
+export default function RealmSelector({
+  errors,
+  setRealm,
+  ...props
+}: InputProp & RealmSelectorProp) {
   const t = useTranslations("SearchForm");
+  const currentLocale = useLocale();
 
-  const realmData = ["classic", "classic_era"];
+  const realmData = ["dynamic-classic", "dynamic-classic1x"];
 
-  const handleChooseRealm = (event: React.MouseEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value;
+  const handleSetRealm = (event: React.MouseEvent<HTMLInputElement>) => {
+    const realmSelected = event.currentTarget.value;
+    setRealm(`${realmSelected}-${currentLocale}`);
   };
 
   return (
@@ -27,7 +37,7 @@ export default function RealmSelector({ errors, ...props }: InputProp) {
                   value={i}
                   id={i}
                   name="realm"
-                  onClick={handleChooseRealm}
+                  onClick={handleSetRealm}
                   className="absolute opacity-1 w-0 h-0 peer cursor-pointer m-0 p-0 peer"
                   {...props}
                 />

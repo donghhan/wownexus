@@ -1,22 +1,34 @@
-import { SessionOptions, getIronSession } from "iron-session";
+import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 
-export interface SessionData {
-  id?: number;
-  avatar?: string;
-  nickname?: string;
-  isLoggedIn?: boolean;
+interface BlizzardAccessToken {
+  access_token?: string;
+  token_type?: string;
+  expires_in?: number;
+  sub?: string;
 }
 
-export const defaultSessionData: SessionData = {
-  isLoggedIn: false,
-};
+export default async function getSession() {
+  const BNET_CLIENT_ID: string = process.env.BNET_CLIENT_ID!;
+  const BNET_CLIENT_SECRET: string = process.env.BNET_CLIENT_SECRET!;
 
-export const sessionOptions: SessionOptions = {
-  cookieName: "auth",
-  password: process.env.AUTH_COOKIE_PASSWORD!,
-  cookieOptions: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-  },
-};
+  if (!cookies().get("blizzard_access_token")) {
+    try {
+      const response = await fetch(
+        `https://oauth.battle.net/token?client_id=${BNET_CLIENT_ID}&client_secret=${BNET_CLIENT_SECRET}&grant_type=client_credentials`,
+        { method: "POST" }
+      );
+      const data = await response.json();
+
+      const { access_token } = data;
+      const session = getIronSession<BlizzardAccessToken>(cookies(), {
+        cookieName: "blizzard_access_token",
+        password: process.env.SESSION_SECRET_KEY as string,
+      });
+      (await session).access_token = access_token(await session).save();
+    } catch (error: any) {
+      console.error("Error: ", error);
+      throw new Error(error);
+    }
+  }
+}

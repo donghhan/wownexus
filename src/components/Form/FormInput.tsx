@@ -1,3 +1,5 @@
+import { useFormStatus } from "react-dom";
+
 interface FormInputProp {
   labelText: string;
 }
@@ -7,6 +9,8 @@ export default function FormInput({
   errors,
   ...props
 }: FormInputProp & InputProp) {
+  const { pending, data } = useFormStatus();
+
   return (
     <div className="flex items-center lg:gap-5">
       <span className="text-slate-400 mr-5">{labelText}</span>

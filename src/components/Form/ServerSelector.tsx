@@ -1,13 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { SessionData, sessionOptions } from "@/lib/session";
+import { useTranslations, useLocale } from "next-intl";
 import useDropdown from "@/hooks/useDropdown";
+import { getSession } from "@/action";
+import { getIronSession } from "iron-session";
+import { cookies } from "next/headers";
 
-interface ServerSelectorProp {}
+interface ServerSelectorProp {
+  realm?: string;
+}
 
-export default function ServerSelector({ errors }: InputProp) {
+// export async function getSession() {
+//   const CLIENT_ID: string = process.env.BNET_CLIENT_ID!;
+//   const CLIENT_SECRET: string = process.env.BNET_CLIENT_SECRET!;
+
+//   const response: Promise<any> = fetch(
+//     `https://oauth.battle.net/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=client_credentials`,
+//     { method: "POST" }
+//   );
+//   const data = (await response).json();
+//   const accessToken = data.access_token;
+
+//   cookies().set("accessToken", accessToken);
+
+//   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+//   return session;
+// }
+
+export default async function ServerSelector({
+  realm,
+  errors,
+}: InputProp & ServerSelectorProp) {
   const t = useTranslations("SearchForm");
+  const currentLocale = useLocale();
+  const [serverList, setServerList] = useState<string[] | undefined>(undefined);
   const [server, setServer] = useState<string | undefined>(undefined);
   const { isOpen, dropdownRef, toggleDropDown } = useDropdown();
 

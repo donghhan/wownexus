@@ -41,6 +41,8 @@ export default async function middleware(request: NextRequest) {
   });
   const response = handleI18nRouting(request);
 
+  const cookie = request.cookies.get("access_token");
+
   return response;
 }
 

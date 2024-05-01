@@ -1,7 +1,4 @@
 {
-    "Index": {
-        "title": "Hello world!"
-    },
     "LanguageSwitcher": {
         "locale": "{locale, select, us {🇺🇸} kr {🇰🇷} tw {🇹🇼} eu {🇪🇺} other {Unknown}}"
     },

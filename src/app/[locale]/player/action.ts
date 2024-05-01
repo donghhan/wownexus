@@ -12,8 +12,6 @@ export async function characterSearch(_: any, formData: FormData) {
     keyword: formData.get("keyword"),
   };
 
-  console.log(data);
-
   const CharacterSearchInput = z.object({
     realm: z
       .string()
